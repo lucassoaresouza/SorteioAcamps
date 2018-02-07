@@ -5,6 +5,10 @@
  */
 package sorteioacamps;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
  * @author Lucas
@@ -12,9 +16,63 @@ package sorteioacamps;
 public class SortearNumero extends javax.swing.JFrame {
 
     FazSorteio sortear = new FazSorteio();
+    Timer t;
+    int timer_flag = 11;
     
     public SortearNumero() {
         initComponents();
+            t = new javax.swing.Timer(300, (ActionEvent e) -> {
+                if(timer_flag < 5){
+                    numero_sorteado.setText("???");
+                    if (numero_sorteado.isVisible() == true) {
+                        timer_flag++;
+                        numero_sorteado.setVisible(false);
+                    }else{
+                        numero_sorteado.setVisible(true);
+                    }
+                } else {
+                    numero_sorteado.setVisible(true);      
+                    t.stop();
+                    int num_max = 0;
+                    int num_min = 0;
+                    timer_flag = 11;
+                    
+                    try{
+                        
+                        num_max = Integer.parseInt(numero_maximo.getText());
+                        num_min = Integer.parseInt(numero_minimo.getText());
+                        
+                    } catch(NumberFormatException ex) {
+                        
+                        erro_inteiro.setText("Os campos devem conter somente números inteiros!");
+                    
+                    }
+                    
+                    if(num_min <= num_max){
+                        int num_sorteado = sortear.sorteio_numero(num_min, num_max);
+                        
+                        if(num_sorteado < 10){
+                            
+                            numero_sorteado.setText("00" + Integer.toString(num_sorteado));
+                            
+                        } else if(num_sorteado >= 10 && num_sorteado <= 99){
+                            
+                            numero_sorteado.setText("0"+ Integer.toString(num_sorteado));
+                            
+                        } else {
+                            
+                            numero_sorteado.setText(Integer.toString(num_sorteado));
+                            
+                        }
+                        
+                    } else {
+                        
+                        erro_inteiro.setText("Os inteiros devem ser inseridos em forma crescente!");
+                        
+                    }
+              
+                }
+        });             
     }
 
     /**
@@ -173,46 +231,11 @@ public class SortearNumero extends javax.swing.JFrame {
     }//GEN-LAST:event_numero_maximoActionPerformed
 
     private void fazer_sorteioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fazer_sorteioActionPerformed
-        
-        int num_max = 0;
-        int num_min = 0;
-        
-        try{
-        
-            num_max = Integer.parseInt(numero_maximo.getText());
-            num_min = Integer.parseInt(numero_minimo.getText());
-        
-        } catch(NumberFormatException e) {
+        timer_flag = 0;
+        t.start();        
+        limpar_sorteio.setEnabled(true);
+        fazer_sorteio.setEnabled(false);
             
-            erro_inteiro.setText("Os campos devem conter somente números inteiros!");
-        }
-        
-        if(num_min <= num_max){
-            int num_sorteado = sortear.sorteio_numero(num_min, num_max);
-
-            if(num_sorteado < 10){
-
-                numero_sorteado.setText("00" + Integer.toString(num_sorteado));
-
-            } else if(num_sorteado >= 10 && num_sorteado <= 99){
-
-                numero_sorteado.setText("0"+ Integer.toString(num_sorteado));
-
-            } else {
-
-                numero_sorteado.setText(Integer.toString(num_sorteado));
-                
-            }
-        
-        } else {
-            
-            erro_inteiro.setText("Os inteiros devem ser inseridos em forma crescente!");
-            
-        }
-        
-            limpar_sorteio.setEnabled(true);
-            fazer_sorteio.setEnabled(false);
-        
     }//GEN-LAST:event_fazer_sorteioActionPerformed
 
     private void voltar_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltar_inicioActionPerformed
