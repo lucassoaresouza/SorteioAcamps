@@ -37,6 +37,7 @@ public class SortearNumero extends javax.swing.JFrame {
         numero_sorteado = new javax.swing.JLabel();
         voltar_inicio = new javax.swing.JButton();
         limpar_sorteio = new javax.swing.JButton();
+        erro_inteiro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sortear um Número");
@@ -91,6 +92,9 @@ public class SortearNumero extends javax.swing.JFrame {
             }
         });
 
+        erro_inteiro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        erro_inteiro.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,6 +130,10 @@ public class SortearNumero extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(voltar_inicio)))
                 .addContainerGap(55, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(erro_inteiro)
+                .addGap(184, 184, 184))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,11 +150,13 @@ public class SortearNumero extends javax.swing.JFrame {
                     .addComponent(numero_minimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(limpar_sorteio))
-                .addGap(37, 37, 37)
+                .addGap(3, 3, 3)
+                .addComponent(erro_inteiro)
+                .addGap(18, 18, 18)
                 .addComponent(label_numero_sorteado_eh)
                 .addGap(26, 26, 26)
                 .addComponent(numero_sorteado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addComponent(voltar_inicio)
                 .addContainerGap())
         );
@@ -164,28 +174,44 @@ public class SortearNumero extends javax.swing.JFrame {
 
     private void fazer_sorteioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fazer_sorteioActionPerformed
         
-        int num_max = Integer.parseInt(numero_maximo.getText());
-        int num_min = Integer.parseInt(numero_minimo.getText());
+        int num_max = 0;
+        int num_min = 0;
         
+        try{
         
-        int num_sorteado = sortear.sorteio_numero(num_min, num_max);
+            num_max = Integer.parseInt(numero_maximo.getText());
+            num_min = Integer.parseInt(numero_minimo.getText());
         
-        if(num_sorteado < 10){
+        } catch(NumberFormatException e) {
             
-            numero_sorteado.setText("00" + Integer.toString(num_sorteado));
-            
-        } else if(num_sorteado >= 10 && num_sorteado <= 99){
-            
-            numero_sorteado.setText("0"+ Integer.toString(num_sorteado));
-            
-        } else {
-        
-            numero_sorteado.setText(Integer.toString(num_sorteado));
-        
+            erro_inteiro.setText("Os campos devem conter somente números inteiros!");
         }
         
-        limpar_sorteio.setEnabled(true);
-        fazer_sorteio.setEnabled(false);
+        if(num_min <= num_max){
+            int num_sorteado = sortear.sorteio_numero(num_min, num_max);
+
+            if(num_sorteado < 10){
+
+                numero_sorteado.setText("00" + Integer.toString(num_sorteado));
+
+            } else if(num_sorteado >= 10 && num_sorteado <= 99){
+
+                numero_sorteado.setText("0"+ Integer.toString(num_sorteado));
+
+            } else {
+
+                numero_sorteado.setText(Integer.toString(num_sorteado));
+                
+            }
+        
+        } else {
+            
+            erro_inteiro.setText("Os inteiros devem ser inseridos em forma crescente!");
+            
+        }
+        
+            limpar_sorteio.setEnabled(true);
+            fazer_sorteio.setEnabled(false);
         
     }//GEN-LAST:event_fazer_sorteioActionPerformed
 
@@ -198,6 +224,7 @@ public class SortearNumero extends javax.swing.JFrame {
     private void limpar_sorteioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpar_sorteioActionPerformed
         
         numero_sorteado.setText("???");
+        erro_inteiro.setText("");
         fazer_sorteio.setEnabled(true);
     }//GEN-LAST:event_limpar_sorteioActionPerformed
 
@@ -238,6 +265,7 @@ public class SortearNumero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel erro_inteiro;
     private javax.swing.JButton fazer_sorteio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
