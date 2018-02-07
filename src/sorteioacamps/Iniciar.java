@@ -11,11 +11,11 @@ package sorteioacamps;
  */
 public class Iniciar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Iniciar
-     */
+     SortearNumero sort_numb = new SortearNumero();
+    
     public Iniciar() {
         initComponents();
+        //verificar_janela();
     }
 
     /**
@@ -27,35 +27,34 @@ public class Iniciar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        sortear_numero = new javax.swing.JButton();
+        sortear_pessoa = new javax.swing.JButton();
+        label_titulo = new javax.swing.JLabel();
+        label_igreja = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sorteio Acamps");
-        setAutoRequestFocus(false);
         setLocation(new java.awt.Point(683, 384));
         setResizable(false);
 
-        jButton1.setText("Sortear Número");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        sortear_numero.setText("Sortear Número");
+        sortear_numero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                sortear_numeroActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sortear Pessoa");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        sortear_pessoa.setText("Sortear Pessoa");
+        sortear_pessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                sortear_pessoaActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Sorteio de Tarefas ou Brindes");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        label_titulo.setText("Sorteio de Tarefas ou Brindes");
+        label_titulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel3.setText("Primeira Igreja Batista Bíblica no Novo Gama");
+        label_igreja.setText("Primeira Igreja Batista Bíblica no Novo Gama");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,45 +62,58 @@ public class Iniciar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(label_titulo)
                 .addGap(110, 110, 110))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
-                        .addComponent(jLabel3))
+                        .addComponent(label_igreja))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(134, 134, 134)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))))
+                            .addComponent(sortear_numero)
+                            .addComponent(sortear_pessoa))))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jLabel1)
+                .addComponent(label_titulo)
                 .addGap(61, 61, 61)
-                .addComponent(jButton1)
+                .addComponent(sortear_numero)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(sortear_pessoa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(label_igreja)
                 .addGap(49, 49, 49))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void sortear_numeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortear_numeroActionPerformed
+        
+        sort_numb.setVisible(true);
+       
+    }//GEN-LAST:event_sortear_numeroActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void sortear_pessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortear_pessoaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_sortear_pessoaActionPerformed
 
+//    private void verificar_janela(){
+//        
+//        if(sort_numb.isEnabled()){
+//            sortear_pessoa.setEnabled(false);
+//            sortear_numero.setEnabled(false);
+//        } else {
+//            sortear_pessoa.setEnabled(true);
+//            sortear_pessoa.setEnabled(true);
+//        }
+//    }
+    
     /**
      * @param args the command line arguments
      */
@@ -134,14 +146,15 @@ public class Iniciar extends javax.swing.JFrame {
             public void run() {
                 
                 new Iniciar().setVisible(true);
+             
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel label_igreja;
+    private javax.swing.JLabel label_titulo;
+    private javax.swing.JButton sortear_numero;
+    private javax.swing.JButton sortear_pessoa;
     // End of variables declaration//GEN-END:variables
 }
