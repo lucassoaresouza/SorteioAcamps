@@ -31,64 +31,57 @@ public class Iniciar extends javax.swing.JFrame {
         sortear_pessoa = new javax.swing.JButton();
         label_titulo = new javax.swing.JLabel();
         label_igreja = new javax.swing.JLabel();
+        label_versao = new javax.swing.JLabel();
+        iniciar_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sorteio Acamps");
-        setLocation(new java.awt.Point(683, 384));
+        setLocation(new java.awt.Point(600, 300));
+        setPreferredSize(new java.awt.Dimension(700, 500));
         setResizable(false);
+        getContentPane().setLayout(null);
 
-        sortear_numero.setText("Sortear Número");
+        sortear_numero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sorteioacamps/imagens/sortear_brinde_v.jpg"))); // NOI18N
         sortear_numero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sortear_numeroActionPerformed(evt);
             }
         });
+        getContentPane().add(sortear_numero);
+        sortear_numero.setBounds(280, 189, 150, 30);
 
-        sortear_pessoa.setText("Sortear Pessoa");
+        sortear_pessoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sorteioacamps/imagens/sortear_tarefa_v.jpg"))); // NOI18N
         sortear_pessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sortear_pessoaActionPerformed(evt);
             }
         });
+        getContentPane().add(sortear_pessoa);
+        sortear_pessoa.setBounds(280, 260, 150, 30);
 
+        label_titulo.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        label_titulo.setForeground(new java.awt.Color(0, 133, 178));
+        label_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_titulo.setText("Sorteio de Tarefas ou Brindes");
         label_titulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(label_titulo);
+        label_titulo.setBounds(80, 70, 560, 100);
 
+        label_igreja.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        label_igreja.setForeground(new java.awt.Color(0, 133, 178));
         label_igreja.setText("Primeira Igreja Batista Bíblica no Novo Gama");
+        getContentPane().add(label_igreja);
+        label_igreja.setBounds(80, 350, 530, 70);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(label_titulo)
-                .addGap(110, 110, 110))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(label_igreja))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sortear_numero)
-                            .addComponent(sortear_pessoa))))
-                .addContainerGap(72, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(label_titulo)
-                .addGap(61, 61, 61)
-                .addComponent(sortear_numero)
-                .addGap(18, 18, 18)
-                .addComponent(sortear_pessoa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(label_igreja)
-                .addGap(49, 49, 49))
-        );
+        label_versao.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        label_versao.setForeground(new java.awt.Color(0, 133, 178));
+        label_versao.setText("Versão 1.0 - 09/02/2017");
+        getContentPane().add(label_versao);
+        label_versao.setBounds(440, 480, 170, 16);
+
+        iniciar_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sorteioacamps/imagens/1.jpg"))); // NOI18N
+        getContentPane().add(iniciar_background);
+        iniciar_background.setBounds(0, 0, 700, 500);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,8 +145,10 @@ public class Iniciar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel iniciar_background;
     private javax.swing.JLabel label_igreja;
     private javax.swing.JLabel label_titulo;
+    private javax.swing.JLabel label_versao;
     private javax.swing.JButton sortear_numero;
     private javax.swing.JButton sortear_pessoa;
     // End of variables declaration//GEN-END:variables
