@@ -97,7 +97,7 @@ public class SortearNumero extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sortear Brinde");
+        setTitle("Sortear um Número");
         setLocation(new java.awt.Point(600, 300));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -192,14 +192,6 @@ public class SortearNumero extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_numero_maximoActionPerformed
 
-    private void fazer_sorteioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fazer_sorteioActionPerformed
-        timer_flag = 0;
-        t.start();        
-        limpar_sorteio.setEnabled(true);
-        fazer_sorteio.setEnabled(false);
-            
-    }//GEN-LAST:event_fazer_sorteioActionPerformed
-
     private void voltar_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltar_inicioActionPerformed
         
         this.setVisible(false);
@@ -207,11 +199,20 @@ public class SortearNumero extends javax.swing.JFrame {
     }//GEN-LAST:event_voltar_inicioActionPerformed
 
     private void limpar_sorteioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpar_sorteioActionPerformed
-        
+
         numero_sorteado.setText("???");
         erro_inteiro.setText("");
         fazer_sorteio.setEnabled(true);
+        limpar_sorteio.setEnabled(false);
     }//GEN-LAST:event_limpar_sorteioActionPerformed
+
+    private void fazer_sorteioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fazer_sorteioActionPerformed
+        timer_flag = 0;
+        t.start();
+        limpar_sorteio.setEnabled(true);
+        fazer_sorteio.setEnabled(false);
+
+    }//GEN-LAST:event_fazer_sorteioActionPerformed
 
     
     /**
