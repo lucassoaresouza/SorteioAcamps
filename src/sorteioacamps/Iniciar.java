@@ -12,6 +12,7 @@ package sorteioacamps;
 public class Iniciar extends javax.swing.JFrame {
 
      SortearNumero sort_numb = new SortearNumero();
+     SortearTarefa sort_tarefa = new SortearTarefa();
     
     public Iniciar() {
         initComponents();
@@ -93,19 +94,10 @@ public class Iniciar extends javax.swing.JFrame {
     }//GEN-LAST:event_sortear_numeroActionPerformed
 
     private void sortear_pessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortear_pessoaActionPerformed
-        // TODO add your handling code here:
+        
+        sort_tarefa.setVisible(true);
+        
     }//GEN-LAST:event_sortear_pessoaActionPerformed
-
-//    private void verificar_janela(){
-//        
-//        if(sort_numb.isEnabled()){
-//            sortear_pessoa.setEnabled(false);
-//            sortear_numero.setEnabled(false);
-//        } else {
-//            sortear_pessoa.setEnabled(true);
-//            sortear_pessoa.setEnabled(true);
-//        }
-//    }
     
     /**
      * @param args the command line arguments

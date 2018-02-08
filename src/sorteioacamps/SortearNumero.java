@@ -97,7 +97,7 @@ public class SortearNumero extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sortear um Número");
+        setTitle("Sortear Brinde");
         setLocation(new java.awt.Point(600, 300));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
