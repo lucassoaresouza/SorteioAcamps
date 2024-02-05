@@ -21,7 +21,7 @@ public class RaffleANumber extends javax.swing.JFrame {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     int screenWidth = (int)screenSize.getWidth();
     int screenHeight = (int)screenSize.getHeight();
-    FazSorteio sortear = new FazSorteio();
+    Raffle raffle = new Raffle();
     Timer t;
     int winksCount = 0;
     int maxWinks = 5;
@@ -273,7 +273,7 @@ public class RaffleANumber extends javax.swing.JFrame {
         } else {
             t.setInitialDelay(0);
             t.start();
-            int raffledNumber = sortear.sorteio_numero(values[0], values[1]);
+            int raffledNumber = raffle.RaffleNumber(values[0], values[1]);
             String parsedRaffledNumber = ParseRaffledNumberToString(raffledNumber);
             text4.setText(parsedRaffledNumber);
             cleanButton.setEnabled(true);

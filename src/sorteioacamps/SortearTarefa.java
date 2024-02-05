@@ -21,7 +21,7 @@ public class SortearTarefa extends javax.swing.JFrame {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     int screenWidth = (int)screenSize.getWidth();
     int screenHeight = (int)screenSize.getHeight();
-    FazSorteio sortear = new FazSorteio();
+    Raffle sortear = new Raffle();
     Timer t;
     int timer_flag = 11;
     ArrayList<Integer> numeros_sorteados = new ArrayList<>();

@@ -7,16 +7,13 @@ package sorteioacamps;
 
 import java.util.Random;
 
-public class FazSorteio {
+public class Raffle {
 
     Random rand = new Random();
     
-    int sorteio_numero(int min, int max){
-    
-        int numero_sorteado = rand.nextInt((max - min) + 1) + min;
-       
-        return numero_sorteado; 
-    
+    int RaffleNumber(int min, int max){
+        int raffledNumber = rand.nextInt((max - min) + 1) + min;
+        return raffledNumber; 
     }
     
 }
