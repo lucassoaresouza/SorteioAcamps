@@ -230,11 +230,13 @@ public class SortearTarefa extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new java.awt.GridLayout(7, 0));
 
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
         sortear_label.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
         sortear_label.setForeground(new java.awt.Color(0, 133, 178));
         sortear_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sortear_label.setText("Sortear");
-        jPanel1.add(sortear_label);
+        jPanel1.add(sortear_label, new java.awt.GridBagConstraints());
 
         qtd_numeros_text.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
         qtd_numeros_text.setForeground(new java.awt.Color(0, 133, 178));
@@ -243,21 +245,23 @@ public class SortearTarefa extends javax.swing.JFrame {
         qtd_numeros_text.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
         qtd_numeros_text.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
         qtd_numeros_text.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        jPanel1.add(qtd_numeros_text);
+        jPanel1.add(qtd_numeros_text, new java.awt.GridBagConstraints());
 
         numeros_sorteados_label.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
         numeros_sorteados_label.setForeground(new java.awt.Color(0, 133, 178));
         numeros_sorteados_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numeros_sorteados_label.setText("número(s)");
-        jPanel1.add(numeros_sorteados_label);
+        jPanel1.add(numeros_sorteados_label, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel1);
+
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
         Entre_label2.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
         Entre_label2.setForeground(new java.awt.Color(0, 133, 178));
         Entre_label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Entre_label2.setText("entre");
-        jPanel2.add(Entre_label2);
+        jPanel2.add(Entre_label2, new java.awt.GridBagConstraints());
 
         num_min_text.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
         num_min_text.setForeground(new java.awt.Color(0, 133, 178));
@@ -266,13 +270,13 @@ public class SortearTarefa extends javax.swing.JFrame {
         num_min_text.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
         num_min_text.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
         num_min_text.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        jPanel2.add(num_min_text);
+        jPanel2.add(num_min_text, new java.awt.GridBagConstraints());
 
         x_e_y.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
         x_e_y.setForeground(new java.awt.Color(0, 133, 178));
         x_e_y.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         x_e_y.setText("e");
-        jPanel2.add(x_e_y);
+        jPanel2.add(x_e_y, new java.awt.GridBagConstraints());
 
         num_max_text.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
         num_max_text.setForeground(new java.awt.Color(0, 133, 178));
@@ -286,11 +290,11 @@ public class SortearTarefa extends javax.swing.JFrame {
                 num_max_textActionPerformed(evt);
             }
         });
-        jPanel2.add(num_max_text);
+        jPanel2.add(num_max_text, new java.awt.GridBagConstraints());
 
         erro_variavel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         erro_variavel.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel2.add(erro_variavel);
+        jPanel2.add(erro_variavel, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel2);
 
@@ -300,65 +304,69 @@ public class SortearTarefa extends javax.swing.JFrame {
         numeros_label.setText("Números Sorteados");
         getContentPane().add(numeros_label);
 
+        jPanel6.setLayout(new java.awt.GridBagLayout());
+
         sort_number_1.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
         sort_number_1.setForeground(new java.awt.Color(0, 133, 178));
         sort_number_1.setText("???");
-        jPanel6.add(sort_number_1);
-        jPanel6.add(filler1);
+        jPanel6.add(sort_number_1, new java.awt.GridBagConstraints());
+        jPanel6.add(filler1, new java.awt.GridBagConstraints());
 
         sort_number_2.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
         sort_number_2.setForeground(new java.awt.Color(0, 133, 178));
         sort_number_2.setText("???");
-        jPanel6.add(sort_number_2);
-        jPanel6.add(filler2);
+        jPanel6.add(sort_number_2, new java.awt.GridBagConstraints());
+        jPanel6.add(filler2, new java.awt.GridBagConstraints());
 
         sort_number_3.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
         sort_number_3.setForeground(new java.awt.Color(0, 133, 178));
         sort_number_3.setText("???");
-        jPanel6.add(sort_number_3);
-        jPanel6.add(filler3);
+        jPanel6.add(sort_number_3, new java.awt.GridBagConstraints());
+        jPanel6.add(filler3, new java.awt.GridBagConstraints());
 
         sort_number_4.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
         sort_number_4.setForeground(new java.awt.Color(0, 133, 178));
         sort_number_4.setText("???");
-        jPanel6.add(sort_number_4);
-        jPanel6.add(filler4);
+        jPanel6.add(sort_number_4, new java.awt.GridBagConstraints());
+        jPanel6.add(filler4, new java.awt.GridBagConstraints());
 
         sort_number_5.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
         sort_number_5.setForeground(new java.awt.Color(0, 133, 178));
         sort_number_5.setText("???");
-        jPanel6.add(sort_number_5);
+        jPanel6.add(sort_number_5, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel6);
+
+        jPanel5.setLayout(new java.awt.GridBagLayout());
 
         sort_number_6.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
         sort_number_6.setForeground(new java.awt.Color(0, 133, 178));
         sort_number_6.setText("???");
-        jPanel5.add(sort_number_6);
-        jPanel5.add(filler5);
+        jPanel5.add(sort_number_6, new java.awt.GridBagConstraints());
+        jPanel5.add(filler5, new java.awt.GridBagConstraints());
 
         sort_number_7.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
         sort_number_7.setForeground(new java.awt.Color(0, 133, 178));
         sort_number_7.setText("???");
-        jPanel5.add(sort_number_7);
-        jPanel5.add(filler6);
+        jPanel5.add(sort_number_7, new java.awt.GridBagConstraints());
+        jPanel5.add(filler6, new java.awt.GridBagConstraints());
 
         sort_number_8.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
         sort_number_8.setForeground(new java.awt.Color(0, 133, 178));
         sort_number_8.setText("???");
-        jPanel5.add(sort_number_8);
-        jPanel5.add(filler7);
+        jPanel5.add(sort_number_8, new java.awt.GridBagConstraints());
+        jPanel5.add(filler7, new java.awt.GridBagConstraints());
 
         sort_number_9.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
         sort_number_9.setForeground(new java.awt.Color(0, 133, 178));
         sort_number_9.setText("???");
-        jPanel5.add(sort_number_9);
-        jPanel5.add(filler8);
+        jPanel5.add(sort_number_9, new java.awt.GridBagConstraints());
+        jPanel5.add(filler8, new java.awt.GridBagConstraints());
 
         sort_number_10.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
         sort_number_10.setForeground(new java.awt.Color(0, 133, 178));
         sort_number_10.setText("???");
-        jPanel5.add(sort_number_10);
+        jPanel5.add(sort_number_10, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel5);
 
