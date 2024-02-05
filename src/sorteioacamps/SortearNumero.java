@@ -8,6 +8,9 @@ package sorteioacamps;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Toolkit;
 
 /**
  *
@@ -15,13 +18,16 @@ import javax.swing.Timer;
  */
 public class SortearNumero extends javax.swing.JFrame {
 
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int screenWidth = (int)screenSize.getWidth();
+    int screenHeight = (int)screenSize.getHeight();
     FazSorteio sortear = new FazSorteio();
     Timer t;
-    int timer_flag = 11;
+    int timer_flag = 5;
     
     public SortearNumero() {
         initComponents();
-            t = new javax.swing.Timer(300, (ActionEvent e) -> {
+            t = new javax.swing.Timer(100, (ActionEvent e) -> {
                 if(timer_flag < 5){
                     numero_sorteado.setText("???");
                     if (numero_sorteado.isVisible() == true) {
@@ -35,7 +41,7 @@ public class SortearNumero extends javax.swing.JFrame {
                     t.stop();
                     int num_max = 0;
                     int num_min = 0;
-                    timer_flag = 11;
+                    timer_flag = 5;
                     
                     try{
                         
@@ -83,103 +89,154 @@ public class SortearNumero extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        numero_minimo = new javax.swing.JTextField();
-        numero_maximo = new javax.swing.JTextField();
-        fazer_sorteio = new javax.swing.JButton();
-        numero_sorteado = new javax.swing.JLabel();
-        voltar_inicio = new javax.swing.JButton();
-        limpar_sorteio = new javax.swing.JButton();
-        erro_inteiro = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         sortear_entre = new javax.swing.JLabel();
+        numero_minimo = new javax.swing.JTextField();
         entre_e_x = new javax.swing.JLabel();
+        numero_maximo = new javax.swing.JTextField();
+        erro_inteiro = new javax.swing.JLabel();
         Numero = new javax.swing.JLabel();
-        background = new javax.swing.JLabel();
+        numero_sorteado = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        limpar_sorteio = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 32767));
+        fazer_sorteio = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 32767));
+        voltar_inicio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sortear um Número");
+        setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
         setLocation(new java.awt.Point(600, 300));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(5, 0, 0, 15));
 
-        numero_minimo.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        sortear_entre.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
+        sortear_entre.setForeground(new java.awt.Color(0, 133, 178));
+        sortear_entre.setText("Sortear entre");
+        jPanel1.add(sortear_entre, new java.awt.GridBagConstraints());
+
+        numero_minimo.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
         numero_minimo.setForeground(new java.awt.Color(0, 133, 178));
         numero_minimo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         numero_minimo.setText("0");
+        numero_minimo.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
+        numero_minimo.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
+        numero_minimo.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
         numero_minimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numero_minimoActionPerformed(evt);
             }
         });
-        getContentPane().add(numero_minimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 60, 30));
+        jPanel1.add(numero_minimo, new java.awt.GridBagConstraints());
 
-        numero_maximo.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        entre_e_x.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
+        entre_e_x.setForeground(new java.awt.Color(0, 133, 178));
+        entre_e_x.setText("e");
+        jPanel1.add(entre_e_x, new java.awt.GridBagConstraints());
+
+        numero_maximo.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
         numero_maximo.setForeground(new java.awt.Color(0, 133, 178));
         numero_maximo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         numero_maximo.setText("0");
+        numero_maximo.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
+        numero_maximo.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
+        numero_maximo.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
         numero_maximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numero_maximoActionPerformed(evt);
             }
         });
-        getContentPane().add(numero_maximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 60, 30));
+        jPanel1.add(numero_maximo, new java.awt.GridBagConstraints());
 
-        fazer_sorteio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sorteioacamps/imagens/sortear_v2.jpg"))); // NOI18N
-        fazer_sorteio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        fazer_sorteio.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/sorteioacamps/imagens/sortear_v.jpg"))); // NOI18N
-        fazer_sorteio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fazer_sorteioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(fazer_sorteio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, 100, 30));
+        erro_inteiro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        erro_inteiro.setForeground(new java.awt.Color(255, 0, 0));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        jPanel1.add(erro_inteiro, gridBagConstraints);
 
-        numero_sorteado.setFont(new java.awt.Font("Showcard Gothic", 1, 160)); // NOI18N
+        getContentPane().add(jPanel1);
+
+        Numero.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
+        Numero.setForeground(new java.awt.Color(0, 133, 178));
+        Numero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Numero.setText("Número Sorteado:");
+        Numero.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(Numero);
+
+        numero_sorteado.setFont(new java.awt.Font("Showcard Gothic", 1, screenHeight/7));
         numero_sorteado.setForeground(new java.awt.Color(0, 133, 178));
+        numero_sorteado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numero_sorteado.setText("???");
-        getContentPane().add(numero_sorteado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, -1));
+        getContentPane().add(numero_sorteado);
 
-        voltar_inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sorteioacamps/imagens/voltar_v.jpg"))); // NOI18N
-        voltar_inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        voltar_inicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltar_inicioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(voltar_inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 90, 20));
+        jPanel3.setLayout(new java.awt.GridBagLayout());
 
-        limpar_sorteio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sorteioacamps/imagens/limpar_v.jpg"))); // NOI18N
+        limpar_sorteio.setBackground(new java.awt.Color(242, 242, 242));
+        limpar_sorteio.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
+        limpar_sorteio.setText("Limpar");
+        limpar_sorteio.setToolTipText("");
+        limpar_sorteio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        limpar_sorteio.setBorderPainted(false);
         limpar_sorteio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        limpar_sorteio.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/sorteioacamps/imagens/limpar_v2.jpg"))); // NOI18N
+        limpar_sorteio.setDisabledIcon(null);
         limpar_sorteio.setEnabled(false);
+        limpar_sorteio.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        limpar_sorteio.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        limpar_sorteio.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         limpar_sorteio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limpar_sorteioActionPerformed(evt);
             }
         });
-        getContentPane().add(limpar_sorteio, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 100, 30));
+        jPanel3.add(limpar_sorteio, new java.awt.GridBagConstraints());
+        jPanel3.add(filler1, new java.awt.GridBagConstraints());
 
-        erro_inteiro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        erro_inteiro.setForeground(new java.awt.Color(255, 0, 0));
-        getContentPane().add(erro_inteiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 380, 40));
+        fazer_sorteio.setBackground(new java.awt.Color(242, 242, 242));
+        fazer_sorteio.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
+        fazer_sorteio.setText("Sortear");
+        fazer_sorteio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        fazer_sorteio.setBorderPainted(false);
+        fazer_sorteio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fazer_sorteio.setDisabledIcon(null);
+        fazer_sorteio.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        fazer_sorteio.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        fazer_sorteio.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        fazer_sorteio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fazer_sorteioActionPerformed(evt);
+            }
+        });
+        jPanel3.add(fazer_sorteio, new java.awt.GridBagConstraints());
 
-        sortear_entre.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        sortear_entre.setForeground(new java.awt.Color(0, 133, 178));
-        sortear_entre.setText("Sortear entre");
-        getContentPane().add(sortear_entre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+        getContentPane().add(jPanel3);
 
-        entre_e_x.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        entre_e_x.setForeground(new java.awt.Color(0, 133, 178));
-        entre_e_x.setText("e");
-        getContentPane().add(entre_e_x, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
+        jPanel2.add(filler2);
 
-        Numero.setFont(new java.awt.Font("Arial Black", 0, 56)); // NOI18N
-        Numero.setForeground(new java.awt.Color(0, 133, 178));
-        Numero.setText("Número:");
-        getContentPane().add(Numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, -1, -1));
+        voltar_inicio.setBackground(new java.awt.Color(242, 242, 242));
+        voltar_inicio.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
+        voltar_inicio.setText("Voltar");
+        voltar_inicio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        voltar_inicio.setBorderPainted(false);
+        voltar_inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        voltar_inicio.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        voltar_inicio.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        voltar_inicio.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        voltar_inicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltar_inicioActionPerformed(evt);
+            }
+        });
+        jPanel2.add(voltar_inicio);
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sorteioacamps/imagens/1.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -252,10 +309,14 @@ public class SortearNumero extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Numero;
-    private javax.swing.JLabel background;
     private javax.swing.JLabel entre_e_x;
     private javax.swing.JLabel erro_inteiro;
     private javax.swing.JButton fazer_sorteio;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton limpar_sorteio;
     private javax.swing.JTextField numero_maximo;
     private javax.swing.JTextField numero_minimo;
