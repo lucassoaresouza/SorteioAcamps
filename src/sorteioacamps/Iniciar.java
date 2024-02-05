@@ -5,12 +5,19 @@
  */
 package sorteioacamps;
 
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Lucas
  */
 public class Iniciar extends javax.swing.JFrame {
 
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int screenWidth = (int)screenSize.getWidth();
+    int screenHeight = (int)screenSize.getHeight();
      SortearNumero sort_numb = new SortearNumero();
      SortearTarefa sort_tarefa = new SortearTarefa();
     
@@ -29,9 +36,12 @@ public class Iniciar extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        sortear_numero = new javax.swing.JButton();
-        sortear_pessoa = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         label_titulo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        sortear_pessoa = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        sortear_numero = new javax.swing.JButton();
         label_igreja = new javax.swing.JLabel();
         label_versao = new javax.swing.JLabel();
 
@@ -42,24 +52,34 @@ public class Iniciar extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setPreferredSize(new java.awt.Dimension(700, 500));
         setSize(new java.awt.Dimension(700, 500));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(6, 1, 0, 15));
+        getContentPane().add(jPanel3);
 
-        sortear_numero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sorteioacamps/imagens/sortear_brinde_v.jpg"))); // NOI18N
-        sortear_numero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sortear_numeroActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = -7;
-        gridBagConstraints.ipady = -7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 280, 0, 0);
-        getContentPane().add(sortear_numero, gridBagConstraints);
+        label_titulo.setFont(new java.awt.Font("Arial", 1, screenWidth/25));
+        label_titulo.setForeground(new java.awt.Color(0, 133, 178));
+        label_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_titulo.setText("Sorteio de Tarefas ou Brindes");
+        label_titulo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        label_titulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        label_titulo.setMaximumSize(new java.awt.Dimension(screenWidth/2, 36));
+        label_titulo.setMinimumSize(new java.awt.Dimension(800, 36));
+        label_titulo.setPreferredSize(new java.awt.Dimension(screenWidth/2, 36));
+        getContentPane().add(label_titulo);
 
-        sortear_pessoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sorteioacamps/imagens/sortear_tarefa_v.jpg"))); // NOI18N
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        sortear_pessoa.setBackground(new java.awt.Color(242, 242, 242));
+        sortear_pessoa.setFont(new java.awt.Font("Liberation Sans", 0, screenWidth/35));
+        sortear_pessoa.setText("Sortear para Tarefas");
+        sortear_pessoa.setToolTipText("");
+        sortear_pessoa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        sortear_pessoa.setBorderPainted(false);
+        sortear_pessoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sortear_pessoa.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sortear_pessoa.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        sortear_pessoa.setMinimumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        sortear_pessoa.setPreferredSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
         sortear_pessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sortear_pessoaActionPerformed(evt);
@@ -67,65 +87,73 @@ public class Iniciar extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = -7;
-        gridBagConstraints.ipady = -7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(41, 280, 0, 0);
-        getContentPane().add(sortear_pessoa, gridBagConstraints);
+        gridBagConstraints.gridy = 0;
+        jPanel2.add(sortear_pessoa, gridBagConstraints);
 
-        label_titulo.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        label_titulo.setForeground(new java.awt.Color(0, 133, 178));
-        label_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label_titulo.setText("Sorteio de Tarefas ou Brindes");
-        label_titulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
-        gridBagConstraints.ipadx = -46;
-        gridBagConstraints.ipady = 57;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(70, 80, 0, 61);
-        getContentPane().add(label_titulo, gridBagConstraints);
+        getContentPane().add(jPanel2);
 
-        label_igreja.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        label_igreja.setForeground(new java.awt.Color(0, 133, 178));
-        label_igreja.setText("Primeira Igreja Batista Bíblica no Novo Gama");
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        sortear_numero.setBackground(new java.awt.Color(242, 242, 242));
+        sortear_numero.setFont(new java.awt.Font("Liberation Sans", 0, screenWidth/35));
+        sortear_numero.setText("Sortear para Brindes");
+        sortear_numero.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        sortear_numero.setBorderPainted(false);
+        sortear_numero.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sortear_numero.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sortear_numero.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        sortear_numero.setMinimumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        sortear_numero.setPreferredSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        sortear_numero.setVerifyInputWhenFocusTarget(false);
+        sortear_numero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortear_numeroActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = -72;
-        gridBagConstraints.ipady = 41;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(60, 80, 0, 0);
-        getContentPane().add(label_igreja, gridBagConstraints);
+        jPanel1.add(sortear_numero, gridBagConstraints);
 
-        label_versao.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        getContentPane().add(jPanel1);
+
+        label_igreja.setFont(new java.awt.Font("Arial", 1, screenWidth/50));
+        label_igreja.setForeground(new java.awt.Color(0, 133, 178));
+        label_igreja.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_igreja.setText("Primeira Igreja Batista Bíblica no Novo Gama");
+        label_igreja.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        label_igreja.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        label_igreja.setMaximumSize(new java.awt.Dimension((int)screenWidth/2, 36));
+        label_igreja.setPreferredSize(new java.awt.Dimension((int)screenWidth/2, 36));
+        label_igreja.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(label_igreja);
+
+        label_versao.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         label_versao.setForeground(new java.awt.Color(0, 133, 178));
+        label_versao.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         label_versao.setText("Versão 1.0 - 09/02/2017");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipadx = 10;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(60, 10, 5, 0);
-        getContentPane().add(label_versao, gridBagConstraints);
+        label_versao.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        label_versao.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        label_versao.setMaximumSize(new java.awt.Dimension(160, 30));
+        label_versao.setMinimumSize(new java.awt.Dimension(160, 30));
+        getContentPane().add(label_versao);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sortear_numeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortear_numeroActionPerformed
-        
-        sort_numb.setVisible(true);
-       
-    }//GEN-LAST:event_sortear_numeroActionPerformed
-
     private void sortear_pessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortear_pessoaActionPerformed
-        
+
         sort_tarefa.setVisible(true);
-        
+
     }//GEN-LAST:event_sortear_pessoaActionPerformed
+
+    private void sortear_numeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortear_numeroActionPerformed
+
+        sort_numb.setVisible(true);
+
+    }//GEN-LAST:event_sortear_numeroActionPerformed
     
     /**
      * @param args the command line arguments
@@ -165,6 +193,9 @@ public class Iniciar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel label_igreja;
     private javax.swing.JLabel label_titulo;
     private javax.swing.JLabel label_versao;
