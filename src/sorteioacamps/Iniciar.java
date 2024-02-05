@@ -18,7 +18,7 @@ public class Iniciar extends javax.swing.JFrame {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     int screenWidth = (int)screenSize.getWidth();
     int screenHeight = (int)screenSize.getHeight();
-    SortearNumero sort_numb = new SortearNumero();
+    RaffleANumber sort_numb = new RaffleANumber();
     SortearTarefa sort_tarefa = new SortearTarefa();
     
     public Iniciar() {

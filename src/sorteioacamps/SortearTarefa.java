@@ -31,55 +31,37 @@ public class SortearTarefa extends javax.swing.JFrame {
     public SortearTarefa() {
         initComponents();
         
-            t = new javax.swing.Timer(300, new ActionListener() {
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(timer_flag < 5){
-                    
-                    sort_number_2.setText("???");
-                    sort_number_3.setText("???");
-                    sort_number_4.setText("???");
-                    sort_number_5.setText("???");
-                    sort_number_6.setText("???");
-                    sort_number_7.setText("???");
-                    sort_number_8.setText("???");
-                    sort_number_9.setText("???");
-                    sort_number_10.setText("???");
-                    sort_number_1.setText("???");
-                    
-                    if (sort_number_1.isVisible() == true) {
-                        timer_flag++;
-                        
-                        sort_number_1.setVisible(false);
-                        sort_number_2.setVisible(false);
-                        sort_number_3.setVisible(false);
-                        sort_number_4.setVisible(false);
-                        sort_number_5.setVisible(false);
-                        sort_number_6.setVisible(false);
-                        sort_number_7.setVisible(false);
-                        sort_number_8.setVisible(false);
-                        sort_number_9.setVisible(false);
-                        sort_number_10.setVisible(false);
-                        
-                    
-                    }else{
-
-                        sort_number_1.setVisible(true);
-                        sort_number_2.setVisible(true);
-                        sort_number_3.setVisible(true);
-                        sort_number_4.setVisible(true);
-                        sort_number_5.setVisible(true);
-                        sort_number_6.setVisible(true);
-                        sort_number_7.setVisible(true);
-                        sort_number_8.setVisible(true);
-                        sort_number_9.setVisible(true);
-                        sort_number_10.setVisible(true);
-                        
-                    }
+        t = new javax.swing.Timer(100, (ActionEvent e) -> {
+            if(timer_flag < 5){
                 
-                } else {
-
+                sort_number_2.setText("???");
+                sort_number_3.setText("???");
+                sort_number_4.setText("???");
+                sort_number_5.setText("???");
+                sort_number_6.setText("???");
+                sort_number_7.setText("???");
+                sort_number_8.setText("???");
+                sort_number_9.setText("???");
+                sort_number_10.setText("???");
+                sort_number_1.setText("???");
+                
+                if (sort_number_1.isVisible() == true) {
+                    timer_flag++;
+                    
+                    sort_number_1.setVisible(false);
+                    sort_number_2.setVisible(false);
+                    sort_number_3.setVisible(false);
+                    sort_number_4.setVisible(false);
+                    sort_number_5.setVisible(false);
+                    sort_number_6.setVisible(false);
+                    sort_number_7.setVisible(false);
+                    sort_number_8.setVisible(false);
+                    sort_number_9.setVisible(false);
+                    sort_number_10.setVisible(false);
+                    
+                    
+                }else{
+                    
                     sort_number_1.setVisible(true);
                     sort_number_2.setVisible(true);
                     sort_number_3.setVisible(true);
@@ -91,85 +73,99 @@ public class SortearTarefa extends javax.swing.JFrame {
                     sort_number_9.setVisible(true);
                     sort_number_10.setVisible(true);
                     
-                    t.stop();
-                    int num_max = 0;
-                    int num_min = 0;
-                    timer_flag = 11;
+                }
+                
+            } else {
+                
+                sort_number_1.setVisible(true);
+                sort_number_2.setVisible(true);
+                sort_number_3.setVisible(true);
+                sort_number_4.setVisible(true);
+                sort_number_5.setVisible(true);
+                sort_number_6.setVisible(true);
+                sort_number_7.setVisible(true);
+                sort_number_8.setVisible(true);
+                sort_number_9.setVisible(true);
+                sort_number_10.setVisible(true);
+                
+                t.stop();
+                int num_max = 0;
+                int num_min = 0;
+                timer_flag = 11;
+                
+                try{
                     
-                    try{
-                        
-                        num_max = Integer.parseInt(num_max_text.getText());
-                        num_min = Integer.parseInt(num_min_text.getText());
-                        
-                    } catch(NumberFormatException ex) {
-                        
-                        erro_variavel.setText("Os campos devem conter somente números inteiros!");
+                    num_max = Integer.parseInt(num_max_text.getText());
+                    num_min = Integer.parseInt(num_min_text.getText());
                     
-                    }
-    
+                } catch(NumberFormatException ex) {
                     
-                    try{
+                    erro_variavel.setText("Os campos devem conter somente números inteiros!");
                     
-                        qtd_numeros = (Integer.parseInt(qtd_numeros_text.getText()));
+                }
+                
+                
+                try{
                     
-                    } catch (NumberFormatException number) {
-
-                                erro_variavel.setText("A quantidade deve estar entre 1 e 10");
-                                
-                    }
+                    qtd_numeros = (Integer.parseInt(qtd_numeros_text.getText()));
                     
-                    if(num_min <= num_max){
+                } catch (NumberFormatException number) {
+                    
+                    erro_variavel.setText("A quantidade deve estar entre 1 e 10");
+                    
+                }
+                
+                if(num_min <= num_max){
+                    
+                    if((num_max - num_min) >= qtd_numeros - 1){
                         
-                        if((num_max - num_min) >= qtd_numeros - 1){
-                        
-                            for(int cont = num_min; cont <= num_max; cont++){
-                                todos_numeros.add(cont);
-                            }
-
-                            Collections.shuffle(todos_numeros);
-
-                            qtd_numeros = (Integer.parseInt(qtd_numeros_text.getText()));
-
-                            for(int cont = 0; cont < qtd_numeros; cont++){
-
-                                numeros_sorteados.add(todos_numeros.get(cont));
-                                
-                            }
-
-                           for(int cont_2 = 0 + qtd_numeros; cont_2 < 10; cont_2++ ){
-
-                                numeros_sorteados.add(0);
-                                
-                            }
-
-                            if(qtd_numeros <= 10 && qtd_numeros >= 1){        
-
-                                sort_number_1.setText(Integer.toString(numeros_sorteados.get(0)));
-                                sort_number_2.setText(Integer.toString(numeros_sorteados.get(1)));
-                                sort_number_3.setText(Integer.toString(numeros_sorteados.get(2)));
-                                sort_number_4.setText(Integer.toString(numeros_sorteados.get(3)));
-                                sort_number_5.setText(Integer.toString(numeros_sorteados.get(4)));
-                                sort_number_6.setText(Integer.toString(numeros_sorteados.get(5)));
-                                sort_number_7.setText(Integer.toString(numeros_sorteados.get(6)));
-                                sort_number_8.setText(Integer.toString(numeros_sorteados.get(7)));
-                                sort_number_9.setText(Integer.toString(numeros_sorteados.get(8)));
-                                sort_number_10.setText(Integer.toString(numeros_sorteados.get(9)));
-
-                            } else {
-                                erro_variavel.setText("O numero maximo de numeros sorteado é 10");
-                            }
-                        
-                        } else {
-                            erro_variavel.setText("A quantidade sorteada deve ser menor que a diferença do maior e do menor numero");
+                        for(int cont = num_min; cont <= num_max; cont++){
+                            todos_numeros.add(cont);
                         }
-
+                        
+                        Collections.shuffle(todos_numeros);
+                        
+                        qtd_numeros = (Integer.parseInt(qtd_numeros_text.getText()));
+                        
+                        for(int cont = 0; cont < qtd_numeros; cont++){
+                            
+                            numeros_sorteados.add(todos_numeros.get(cont));
+                            
+                        }
+                        
+                        for(int cont_2 = 0 + qtd_numeros; cont_2 < 10; cont_2++ ){
+                            
+                            numeros_sorteados.add(0);
+                            
+                        }
+                        
+                        if(qtd_numeros <= 10 && qtd_numeros >= 1){
+                            
+                            sort_number_1.setText(Integer.toString(numeros_sorteados.get(0)));
+                            sort_number_2.setText(Integer.toString(numeros_sorteados.get(1)));
+                            sort_number_3.setText(Integer.toString(numeros_sorteados.get(2)));
+                            sort_number_4.setText(Integer.toString(numeros_sorteados.get(3)));
+                            sort_number_5.setText(Integer.toString(numeros_sorteados.get(4)));
+                            sort_number_6.setText(Integer.toString(numeros_sorteados.get(5)));
+                            sort_number_7.setText(Integer.toString(numeros_sorteados.get(6)));
+                            sort_number_8.setText(Integer.toString(numeros_sorteados.get(7)));
+                            sort_number_9.setText(Integer.toString(numeros_sorteados.get(8)));
+                            sort_number_10.setText(Integer.toString(numeros_sorteados.get(9)));
+                            
+                        } else {
+                            erro_variavel.setText("O numero maximo de numeros sorteado é 10");
+                        }
+                        
                     } else {
-                        
-                        erro_variavel.setText("Os inteiros devem ser inseridos em forma crescente!");
-                        
+                        erro_variavel.setText("A quantidade sorteada deve ser menor que a diferença do maior e do menor numero");
                     }
               
+                } else {
+                    
+                    erro_variavel.setText("Os inteiros devem ser inseridos em forma crescente!");
+                    
                 }
+                
             }
         });
         
