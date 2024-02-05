@@ -104,14 +104,13 @@ public class SortearNumero extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 32767));
         fazer_sorteio = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 32767));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(15, 25), new java.awt.Dimension(15, 25), new java.awt.Dimension(15, 25));
         voltar_inicio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sortear um Número");
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
         setLocation(new java.awt.Point(600, 300));
-        setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(5, 0, 0, 15));
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
