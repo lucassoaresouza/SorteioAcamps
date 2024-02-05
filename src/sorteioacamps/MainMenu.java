@@ -19,7 +19,7 @@ public class MainMenu extends javax.swing.JFrame {
     int screenWidth = (int)screenSize.getWidth();
     int screenHeight = (int)screenSize.getHeight();
     RaffleANumber sort_numb = new RaffleANumber();
-    SortearTarefa sort_tarefa = new SortearTarefa();
+    RaffleMultNumbers sort_tarefa = new RaffleMultNumbers();
     
     public MainMenu() {
         initComponents();

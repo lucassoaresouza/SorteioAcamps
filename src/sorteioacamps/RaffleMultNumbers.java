@@ -17,7 +17,7 @@ import javax.swing.Timer;
  *
  * @author Lucas
  */
-public class SortearTarefa extends javax.swing.JFrame {
+public class RaffleMultNumbers extends javax.swing.JFrame {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     int screenWidth = (int)screenSize.getWidth();
     int screenHeight = (int)screenSize.getHeight();
@@ -28,7 +28,7 @@ public class SortearTarefa extends javax.swing.JFrame {
     ArrayList<Integer> todos_numeros = new ArrayList<>();
     int qtd_numeros = 0;
     
-    public SortearTarefa() {
+    public RaffleMultNumbers() {
         initComponents();
         
         t = new javax.swing.Timer(100, (ActionEvent e) -> {
@@ -95,23 +95,23 @@ public class SortearTarefa extends javax.swing.JFrame {
                 
                 try{
                     
-                    num_max = Integer.parseInt(num_max_text.getText());
-                    num_min = Integer.parseInt(num_min_text.getText());
+                    num_max = Integer.parseInt(maximumNumber.getText());
+                    num_min = Integer.parseInt(minimalNumber.getText());
                     
                 } catch(NumberFormatException ex) {
                     
-                    erro_variavel.setText("Os campos devem conter somente números inteiros!");
+                    errorLabel.setText("Os campos devem conter somente números inteiros!");
                     
                 }
                 
                 
                 try{
                     
-                    qtd_numeros = (Integer.parseInt(qtd_numeros_text.getText()));
+                    qtd_numeros = (Integer.parseInt(totalNumberCount.getText()));
                     
                 } catch (NumberFormatException number) {
                     
-                    erro_variavel.setText("A quantidade deve estar entre 1 e 10");
+                    errorLabel.setText("A quantidade deve estar entre 1 e 10");
                     
                 }
                 
@@ -125,7 +125,7 @@ public class SortearTarefa extends javax.swing.JFrame {
                         
                         Collections.shuffle(todos_numeros);
                         
-                        qtd_numeros = (Integer.parseInt(qtd_numeros_text.getText()));
+                        qtd_numeros = (Integer.parseInt(totalNumberCount.getText()));
                         
                         for(int cont = 0; cont < qtd_numeros; cont++){
                             
@@ -153,16 +153,16 @@ public class SortearTarefa extends javax.swing.JFrame {
                             sort_number_10.setText(Integer.toString(numeros_sorteados.get(9)));
                             
                         } else {
-                            erro_variavel.setText("O numero maximo de numeros sorteado é 10");
+                            errorLabel.setText("O numero maximo de numeros sorteado é 10");
                         }
                         
                     } else {
-                        erro_variavel.setText("A quantidade sorteada deve ser menor que a diferença do maior e do menor numero");
+                        errorLabel.setText("A quantidade sorteada deve ser menor que a diferença do maior e do menor numero");
                     }
               
                 } else {
                     
-                    erro_variavel.setText("Os inteiros devem ser inseridos em forma crescente!");
+                    errorLabel.setText("Os inteiros devem ser inseridos em forma crescente!");
                     
                 }
                 
@@ -181,16 +181,16 @@ public class SortearTarefa extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        sortear_label = new javax.swing.JLabel();
-        qtd_numeros_text = new javax.swing.JTextField();
-        numeros_sorteados_label = new javax.swing.JLabel();
+        text1 = new javax.swing.JLabel();
+        totalNumberCount = new javax.swing.JTextField();
+        text2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        Entre_label2 = new javax.swing.JLabel();
-        num_min_text = new javax.swing.JTextField();
-        x_e_y = new javax.swing.JLabel();
-        num_max_text = new javax.swing.JTextField();
-        erro_variavel = new javax.swing.JLabel();
-        numeros_label = new javax.swing.JLabel();
+        text3 = new javax.swing.JLabel();
+        minimalNumber = new javax.swing.JTextField();
+        text4 = new javax.swing.JLabel();
+        maximumNumber = new javax.swing.JTextField();
+        errorLabel = new javax.swing.JLabel();
+        text5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         sort_number_1 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25));
@@ -212,12 +212,12 @@ public class SortearTarefa extends javax.swing.JFrame {
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25));
         sort_number_10 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        limpar_sorteio_t = new javax.swing.JButton();
+        cleanButton = new javax.swing.JButton();
         filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 32767));
-        sortear_numbs_button = new javax.swing.JButton();
+        raffleButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(15, 25), new java.awt.Dimension(15, 25), new java.awt.Dimension(15, 25));
-        voltar_button = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sortear Tarefa");
@@ -228,77 +228,82 @@ public class SortearTarefa extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        sortear_label.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
-        sortear_label.setForeground(new java.awt.Color(0, 133, 178));
-        sortear_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        sortear_label.setText("Sortear");
-        jPanel1.add(sortear_label, new java.awt.GridBagConstraints());
+        text1.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
+        text1.setForeground(new java.awt.Color(0, 133, 178));
+        text1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        text1.setText("Sortear");
+        jPanel1.add(text1, new java.awt.GridBagConstraints());
 
-        qtd_numeros_text.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
-        qtd_numeros_text.setForeground(new java.awt.Color(0, 133, 178));
-        qtd_numeros_text.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        qtd_numeros_text.setText("1");
-        qtd_numeros_text.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        qtd_numeros_text.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        qtd_numeros_text.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        jPanel1.add(qtd_numeros_text, new java.awt.GridBagConstraints());
+        totalNumberCount.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
+        totalNumberCount.setForeground(new java.awt.Color(0, 133, 178));
+        totalNumberCount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        totalNumberCount.setText("1");
+        totalNumberCount.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        totalNumberCount.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        totalNumberCount.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        totalNumberCount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalNumberCountActionPerformed(evt);
+            }
+        });
+        jPanel1.add(totalNumberCount, new java.awt.GridBagConstraints());
 
-        numeros_sorteados_label.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
-        numeros_sorteados_label.setForeground(new java.awt.Color(0, 133, 178));
-        numeros_sorteados_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        numeros_sorteados_label.setText("número(s)");
-        jPanel1.add(numeros_sorteados_label, new java.awt.GridBagConstraints());
+        text2.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
+        text2.setForeground(new java.awt.Color(0, 133, 178));
+        text2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        text2.setText("número(s)");
+        jPanel1.add(text2, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel1);
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        Entre_label2.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
-        Entre_label2.setForeground(new java.awt.Color(0, 133, 178));
-        Entre_label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Entre_label2.setText("entre");
-        jPanel2.add(Entre_label2, new java.awt.GridBagConstraints());
+        text3.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
+        text3.setForeground(new java.awt.Color(0, 133, 178));
+        text3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        text3.setText("entre");
+        jPanel2.add(text3, new java.awt.GridBagConstraints());
 
-        num_min_text.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
-        num_min_text.setForeground(new java.awt.Color(0, 133, 178));
-        num_min_text.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        num_min_text.setText("0");
-        num_min_text.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        num_min_text.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        num_min_text.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        jPanel2.add(num_min_text, new java.awt.GridBagConstraints());
+        minimalNumber.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
+        minimalNumber.setForeground(new java.awt.Color(0, 133, 178));
+        minimalNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        minimalNumber.setText("0");
+        minimalNumber.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        minimalNumber.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        minimalNumber.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        jPanel2.add(minimalNumber, new java.awt.GridBagConstraints());
 
-        x_e_y.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
-        x_e_y.setForeground(new java.awt.Color(0, 133, 178));
-        x_e_y.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        x_e_y.setText("e");
-        jPanel2.add(x_e_y, new java.awt.GridBagConstraints());
+        text4.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
+        text4.setForeground(new java.awt.Color(0, 133, 178));
+        text4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        text4.setText("e");
+        jPanel2.add(text4, new java.awt.GridBagConstraints());
 
-        num_max_text.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
-        num_max_text.setForeground(new java.awt.Color(0, 133, 178));
-        num_max_text.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        num_max_text.setText("0");
-        num_max_text.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        num_max_text.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        num_max_text.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        num_max_text.addActionListener(new java.awt.event.ActionListener() {
+        maximumNumber.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
+        maximumNumber.setForeground(new java.awt.Color(0, 133, 178));
+        maximumNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        maximumNumber.setText("0");
+        maximumNumber.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        maximumNumber.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        maximumNumber.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        maximumNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                num_max_textActionPerformed(evt);
+                maximumNumberActionPerformed(evt);
             }
         });
-        jPanel2.add(num_max_text, new java.awt.GridBagConstraints());
+        jPanel2.add(maximumNumber, new java.awt.GridBagConstraints());
 
-        erro_variavel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        erro_variavel.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel2.add(erro_variavel, new java.awt.GridBagConstraints());
+        errorLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(errorLabel, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel2);
 
-        numeros_label.setFont(new java.awt.Font("Arial", 0, screenHeight/15));
-        numeros_label.setForeground(new java.awt.Color(0, 133, 178));
-        numeros_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        numeros_label.setText("Números Sorteados");
-        getContentPane().add(numeros_label);
+        text5.setFont(new java.awt.Font("Arial", 0, screenHeight/15));
+        text5.setForeground(new java.awt.Color(0, 133, 178));
+        text5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        text5.setText("Números Sorteados");
+        getContentPane().add(text5);
 
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
@@ -368,78 +373,78 @@ public class SortearTarefa extends javax.swing.JFrame {
 
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        limpar_sorteio_t.setBackground(new java.awt.Color(242, 242, 242));
-        limpar_sorteio_t.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
-        limpar_sorteio_t.setText("Limpar");
-        limpar_sorteio_t.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        limpar_sorteio_t.setBorderPainted(false);
-        limpar_sorteio_t.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        limpar_sorteio_t.setDisabledIcon(null);
-        limpar_sorteio_t.setEnabled(false);
-        limpar_sorteio_t.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        limpar_sorteio_t.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        limpar_sorteio_t.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        limpar_sorteio_t.addActionListener(new java.awt.event.ActionListener() {
+        cleanButton.setBackground(new java.awt.Color(242, 242, 242));
+        cleanButton.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
+        cleanButton.setText("Limpar");
+        cleanButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cleanButton.setBorderPainted(false);
+        cleanButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cleanButton.setDisabledIcon(null);
+        cleanButton.setEnabled(false);
+        cleanButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        cleanButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        cleanButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        cleanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limpar_sorteio_tActionPerformed(evt);
+                cleanButtonActionPerformed(evt);
             }
         });
-        jPanel4.add(limpar_sorteio_t, new java.awt.GridBagConstraints());
+        jPanel4.add(cleanButton, new java.awt.GridBagConstraints());
         jPanel4.add(filler10, new java.awt.GridBagConstraints());
 
-        sortear_numbs_button.setBackground(new java.awt.Color(242, 242, 242));
-        sortear_numbs_button.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
-        sortear_numbs_button.setText("Sortear");
-        sortear_numbs_button.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        sortear_numbs_button.setBorderPainted(false);
-        sortear_numbs_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        sortear_numbs_button.setDisabledIcon(null);
-        sortear_numbs_button.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        sortear_numbs_button.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        sortear_numbs_button.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        sortear_numbs_button.addActionListener(new java.awt.event.ActionListener() {
+        raffleButton.setBackground(new java.awt.Color(242, 242, 242));
+        raffleButton.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
+        raffleButton.setText("Sortear");
+        raffleButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        raffleButton.setBorderPainted(false);
+        raffleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        raffleButton.setDisabledIcon(null);
+        raffleButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        raffleButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        raffleButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        raffleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sortear_numbs_buttonActionPerformed(evt);
+                raffleButtonActionPerformed(evt);
             }
         });
-        jPanel4.add(sortear_numbs_button, new java.awt.GridBagConstraints());
+        jPanel4.add(raffleButton, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel4);
 
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
         jPanel3.add(filler9);
 
-        voltar_button.setBackground(new java.awt.Color(242, 242, 242));
-        voltar_button.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
-        voltar_button.setText("Voltar");
-        voltar_button.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        voltar_button.setBorderPainted(false);
-        voltar_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        voltar_button.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        voltar_button.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        voltar_button.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        voltar_button.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setBackground(new java.awt.Color(242, 242, 242));
+        backButton.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
+        backButton.setText("Voltar");
+        backButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        backButton.setBorderPainted(false);
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        backButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        backButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                voltar_buttonActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(voltar_button);
+        jPanel3.add(backButton);
 
         getContentPane().add(jPanel3);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sortear_numbs_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortear_numbs_buttonActionPerformed
+    private void raffleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raffleButtonActionPerformed
                 
         timer_flag = 0;
         t.start();
-        limpar_sorteio_t.setEnabled(true);
-        sortear_numbs_button.setEnabled(false);
+        cleanButton.setEnabled(true);
+        raffleButton.setEnabled(false);
         
-    }//GEN-LAST:event_sortear_numbs_buttonActionPerformed
+    }//GEN-LAST:event_raffleButtonActionPerformed
 
-    private void limpar_sorteio_tActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpar_sorteio_tActionPerformed
+    private void cleanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanButtonActionPerformed
 
         sort_number_1.setText("???");
         sort_number_2.setText("???");
@@ -456,21 +461,25 @@ public class SortearTarefa extends javax.swing.JFrame {
         numeros_sorteados.clear();
         todos_numeros.clear();
             
-        erro_variavel.setText("");
-        sortear_numbs_button.setEnabled(true);
-        limpar_sorteio_t.setEnabled(false);
+        errorLabel.setText("");
+        raffleButton.setEnabled(true);
+        cleanButton.setEnabled(false);
         
-    }//GEN-LAST:event_limpar_sorteio_tActionPerformed
+    }//GEN-LAST:event_cleanButtonActionPerformed
 
-    private void voltar_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltar_buttonActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         
         this.setVisible(false);
         
-    }//GEN-LAST:event_voltar_buttonActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
-    private void num_max_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num_max_textActionPerformed
+    private void maximumNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maximumNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_num_max_textActionPerformed
+    }//GEN-LAST:event_maximumNumberActionPerformed
+
+    private void totalNumberCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalNumberCountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totalNumberCountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -489,27 +498,28 @@ public class SortearTarefa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SortearTarefa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RaffleMultNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SortearTarefa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RaffleMultNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SortearTarefa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RaffleMultNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SortearTarefa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RaffleMultNumbers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SortearTarefa().setVisible(true);
+                new RaffleMultNumbers().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Entre_label2;
-    private javax.swing.JLabel erro_variavel;
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton cleanButton;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler10;
     private javax.swing.Box.Filler filler2;
@@ -526,12 +536,9 @@ public class SortearTarefa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JButton limpar_sorteio_t;
-    private javax.swing.JTextField num_max_text;
-    private javax.swing.JTextField num_min_text;
-    private javax.swing.JLabel numeros_label;
-    private javax.swing.JLabel numeros_sorteados_label;
-    private javax.swing.JTextField qtd_numeros_text;
+    private javax.swing.JTextField maximumNumber;
+    private javax.swing.JTextField minimalNumber;
+    private javax.swing.JButton raffleButton;
     private javax.swing.JLabel sort_number_1;
     private javax.swing.JLabel sort_number_10;
     private javax.swing.JLabel sort_number_2;
@@ -542,9 +549,11 @@ public class SortearTarefa extends javax.swing.JFrame {
     private javax.swing.JLabel sort_number_7;
     private javax.swing.JLabel sort_number_8;
     private javax.swing.JLabel sort_number_9;
-    private javax.swing.JLabel sortear_label;
-    private javax.swing.JButton sortear_numbs_button;
-    private javax.swing.JButton voltar_button;
-    private javax.swing.JLabel x_e_y;
+    private javax.swing.JLabel text1;
+    private javax.swing.JLabel text2;
+    private javax.swing.JLabel text3;
+    private javax.swing.JLabel text4;
+    private javax.swing.JLabel text5;
+    private javax.swing.JTextField totalNumberCount;
     // End of variables declaration//GEN-END:variables
 }
