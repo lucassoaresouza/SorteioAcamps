@@ -18,8 +18,8 @@ public class Iniciar extends javax.swing.JFrame {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     int screenWidth = (int)screenSize.getWidth();
     int screenHeight = (int)screenSize.getHeight();
-     SortearNumero sort_numb = new SortearNumero();
-     SortearTarefa sort_tarefa = new SortearTarefa();
+    SortearNumero sort_numb = new SortearNumero();
+    SortearTarefa sort_tarefa = new SortearTarefa();
     
     public Iniciar() {
         initComponents();
@@ -55,7 +55,7 @@ public class Iniciar extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridLayout(6, 1, 0, 15));
         getContentPane().add(jPanel3);
 
-        label_titulo.setFont(new java.awt.Font("Arial", 1, screenWidth/25));
+        label_titulo.setFont(new java.awt.Font("Arial", 1, screenHeight/15));
         label_titulo.setForeground(new java.awt.Color(0, 133, 178));
         label_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_titulo.setText("Sorteio de Tarefas ou Brindes");
@@ -70,7 +70,7 @@ public class Iniciar extends javax.swing.JFrame {
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         sortear_pessoa.setBackground(new java.awt.Color(242, 242, 242));
-        sortear_pessoa.setFont(new java.awt.Font("Liberation Sans", 0, screenWidth/35));
+        sortear_pessoa.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
         sortear_pessoa.setText("Sortear para Tarefas");
         sortear_pessoa.setToolTipText("");
         sortear_pessoa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -96,7 +96,7 @@ public class Iniciar extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         sortear_numero.setBackground(new java.awt.Color(242, 242, 242));
-        sortear_numero.setFont(new java.awt.Font("Liberation Sans", 0, screenWidth/35));
+        sortear_numero.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
         sortear_numero.setText("Sortear para Brindes");
         sortear_numero.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         sortear_numero.setBorderPainted(false);
@@ -119,7 +119,7 @@ public class Iniciar extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
 
-        label_igreja.setFont(new java.awt.Font("Arial", 1, screenWidth/50));
+        label_igreja.setFont(new java.awt.Font("Arial", 1, screenHeight/20));
         label_igreja.setForeground(new java.awt.Color(0, 133, 178));
         label_igreja.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label_igreja.setText("Primeira Igreja Batista Bíblica no Novo Gama");
@@ -130,7 +130,7 @@ public class Iniciar extends javax.swing.JFrame {
         label_igreja.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(label_igreja);
 
-        label_versao.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        label_versao.setFont(new java.awt.Font("Arial", 1, screenHeight/40));
         label_versao.setForeground(new java.awt.Color(0, 133, 178));
         label_versao.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         label_versao.setText("Versão 1.0 - 09/02/2017");
