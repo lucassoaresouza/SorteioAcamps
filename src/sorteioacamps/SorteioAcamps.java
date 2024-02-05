@@ -14,7 +14,7 @@ public class SorteioAcamps {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
-                Iniciar tela_inicial = new Iniciar();
+                MainMenu tela_inicial = new MainMenu();
                 tela_inicial.setVisible(true);
                 
             } catch (Exception e) {
