@@ -38,10 +38,10 @@ public class MainMenu extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         text1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        raffleMultNumbers = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         raffleANumbers = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        raffleMultNumbers = new javax.swing.JButton();
         text2 = new javax.swing.JLabel();
         text3 = new javax.swing.JLabel();
 
@@ -65,32 +65,6 @@ public class MainMenu extends javax.swing.JFrame {
         text1.setMinimumSize(new java.awt.Dimension(800, 36));
         text1.setPreferredSize(new java.awt.Dimension(screenWidth/2, 36));
         getContentPane().add(text1);
-
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.setLayout(new java.awt.GridBagLayout());
-
-        raffleMultNumbers.setBackground(new java.awt.Color(242, 242, 242));
-        raffleMultNumbers.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
-        raffleMultNumbers.setText("Sortear Vários");
-        raffleMultNumbers.setToolTipText("");
-        raffleMultNumbers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        raffleMultNumbers.setBorderPainted(false);
-        raffleMultNumbers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        raffleMultNumbers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        raffleMultNumbers.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        raffleMultNumbers.setMinimumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        raffleMultNumbers.setPreferredSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        raffleMultNumbers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                raffleMultNumbersActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        jPanel2.add(raffleMultNumbers, gridBagConstraints);
-
-        getContentPane().add(jPanel2);
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -119,6 +93,32 @@ public class MainMenu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
 
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        raffleMultNumbers.setBackground(new java.awt.Color(242, 242, 242));
+        raffleMultNumbers.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
+        raffleMultNumbers.setText("Sortear Vários");
+        raffleMultNumbers.setToolTipText("");
+        raffleMultNumbers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        raffleMultNumbers.setBorderPainted(false);
+        raffleMultNumbers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        raffleMultNumbers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        raffleMultNumbers.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        raffleMultNumbers.setMinimumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        raffleMultNumbers.setPreferredSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        raffleMultNumbers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                raffleMultNumbersActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        jPanel2.add(raffleMultNumbers, gridBagConstraints);
+
+        getContentPane().add(jPanel2);
+
         text2.setFont(new java.awt.Font("Arial", 1, screenHeight/20));
         text2.setForeground(new java.awt.Color(0, 133, 178));
         text2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -133,7 +133,7 @@ public class MainMenu extends javax.swing.JFrame {
         text3.setFont(new java.awt.Font("Arial", 1, screenHeight/40));
         text3.setForeground(new java.awt.Color(0, 133, 178));
         text3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        text3.setText("Versão 1.0 - 09/02/2017");
+        text3.setText("Versão 1.1.0 - 05/02/2023");
         text3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         text3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         text3.setMaximumSize(new java.awt.Dimension(160, 30));
