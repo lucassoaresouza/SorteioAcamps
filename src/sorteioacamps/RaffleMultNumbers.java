@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.Timer;
+import static sorteioacamps.Utils.ParseRaffledNumberToString;
 
 /**
  *
@@ -21,154 +22,105 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     int screenWidth = (int)screenSize.getWidth();
     int screenHeight = (int)screenSize.getHeight();
-    Raffle sortear = new Raffle();
     Timer t;
-    int timer_flag = 11;
-    ArrayList<Integer> numeros_sorteados = new ArrayList<>();
-    ArrayList<Integer> todos_numeros = new ArrayList<>();
-    int qtd_numeros = 0;
+    ArrayList<Integer> raffledNumbers = new ArrayList<>();
+    ArrayList<Integer> allNumbers = new ArrayList<>();
+    ArrayList<javax.swing.JLabel> numberLabels = new ArrayList<>();
+    int winksCount = 0;
+    int numberCountValue = 0;
+    int maxWinks = 5;
+    int maxTime = 100;
     
+    public void SetAllSortNumbersToInitialState(){
+        for(javax.swing.JLabel sortNumber : numberLabels) {
+           sortNumber.setText("???");
+        }
+    }
+
+    public void SetAllSortNumbersVisible(boolean isVisible){
+        for(javax.swing.JLabel sortNumber : numberLabels) {
+           sortNumber.setVisible(isVisible);
+        }
+    }
+
+    private int[] ValidateReceivedNumbersRange(javax.swing.JTextField jTextFieldNumMax, javax.swing.JTextField jTextFieldNumMin, javax.swing.JLabel jLabelValidationError){
+        int numMin = 0;
+        int numMax = 0;
+        try{
+            numMax = Integer.parseInt(maximumNumber.getText());
+            numMin = Integer.parseInt(minimalNumber.getText());
+        } catch(NumberFormatException ex) {
+            errorLabel.setText("Os campos devem conter somente números inteiros!");
+            return null;
+        }
+        try{
+            numberCountValue = (Integer.parseInt(totalNumberCount.getText()));
+        } catch (NumberFormatException number) {
+            errorLabel.setText("A quantidade deve estar entre 1 e 10");
+            return null;
+        }
+        if (numMin > numMax) {
+            errorLabel.setText("Os inteiros devem ser inseridos em forma crescente!");
+            return null;
+        }
+        if((numMax - numMin) < numberCountValue - 1){
+            errorLabel.setText("A quantidade sorteada deve ser menor que a diferença do maior e do menor número");
+            return null;
+        }
+        if (numberCountValue > 10){
+            errorLabel.setText("O número máximo de números sorteados é 10");
+            return null;
+        }
+        if (numberCountValue < 1){
+            errorLabel.setText("O número mínimo de números sorteados é 10");
+            return null;
+        }
+        int[] values = {numMin, numMax};
+        return values;
+    }
+
     public RaffleMultNumbers() {
         initComponents();
+        numberLabels.add(sortNumber1);
+        numberLabels.add(sortNumber2);
+        numberLabels.add(sortNumber3);
+        numberLabels.add(sortNumber4);
+        numberLabels.add(sortNumber5);
+        numberLabels.add(sortNumber6);
+        numberLabels.add(sortNumber7);
+        numberLabels.add(sortNumber8);
+        numberLabels.add(sortNumber9);
+        numberLabels.add(sortNumber10);
         
-        t = new javax.swing.Timer(100, (ActionEvent e) -> {
-            if(timer_flag < 5){
-                
-                sort_number_2.setText("???");
-                sort_number_3.setText("???");
-                sort_number_4.setText("???");
-                sort_number_5.setText("???");
-                sort_number_6.setText("???");
-                sort_number_7.setText("???");
-                sort_number_8.setText("???");
-                sort_number_9.setText("???");
-                sort_number_10.setText("???");
-                sort_number_1.setText("???");
-                
-                if (sort_number_1.isVisible() == true) {
-                    timer_flag++;
-                    
-                    sort_number_1.setVisible(false);
-                    sort_number_2.setVisible(false);
-                    sort_number_3.setVisible(false);
-                    sort_number_4.setVisible(false);
-                    sort_number_5.setVisible(false);
-                    sort_number_6.setVisible(false);
-                    sort_number_7.setVisible(false);
-                    sort_number_8.setVisible(false);
-                    sort_number_9.setVisible(false);
-                    sort_number_10.setVisible(false);
-                    
-                    
-                }else{
-                    
-                    sort_number_1.setVisible(true);
-                    sort_number_2.setVisible(true);
-                    sort_number_3.setVisible(true);
-                    sort_number_4.setVisible(true);
-                    sort_number_5.setVisible(true);
-                    sort_number_6.setVisible(true);
-                    sort_number_7.setVisible(true);
-                    sort_number_8.setVisible(true);
-                    sort_number_9.setVisible(true);
-                    sort_number_10.setVisible(true);
-                    
-                }
-                
-            } else {
-                
-                sort_number_1.setVisible(true);
-                sort_number_2.setVisible(true);
-                sort_number_3.setVisible(true);
-                sort_number_4.setVisible(true);
-                sort_number_5.setVisible(true);
-                sort_number_6.setVisible(true);
-                sort_number_7.setVisible(true);
-                sort_number_8.setVisible(true);
-                sort_number_9.setVisible(true);
-                sort_number_10.setVisible(true);
-                
-                t.stop();
-                int num_max = 0;
-                int num_min = 0;
-                timer_flag = 11;
-                
-                try{
-                    
-                    num_max = Integer.parseInt(maximumNumber.getText());
-                    num_min = Integer.parseInt(minimalNumber.getText());
-                    
-                } catch(NumberFormatException ex) {
-                    
-                    errorLabel.setText("Os campos devem conter somente números inteiros!");
-                    
-                }
-                
-                
-                try{
-                    
-                    qtd_numeros = (Integer.parseInt(totalNumberCount.getText()));
-                    
-                } catch (NumberFormatException number) {
-                    
-                    errorLabel.setText("A quantidade deve estar entre 1 e 10");
-                    
-                }
-                
-                if(num_min <= num_max){
-                    
-                    if((num_max - num_min) >= qtd_numeros - 1){
-                        
-                        for(int cont = num_min; cont <= num_max; cont++){
-                            todos_numeros.add(cont);
-                        }
-                        
-                        Collections.shuffle(todos_numeros);
-                        
-                        qtd_numeros = (Integer.parseInt(totalNumberCount.getText()));
-                        
-                        for(int cont = 0; cont < qtd_numeros; cont++){
-                            
-                            numeros_sorteados.add(todos_numeros.get(cont));
-                            
-                        }
-                        
-                        for(int cont_2 = 0 + qtd_numeros; cont_2 < 10; cont_2++ ){
-                            
-                            numeros_sorteados.add(0);
-                            
-                        }
-                        
-                        if(qtd_numeros <= 10 && qtd_numeros >= 1){
-                            
-                            sort_number_1.setText(Integer.toString(numeros_sorteados.get(0)));
-                            sort_number_2.setText(Integer.toString(numeros_sorteados.get(1)));
-                            sort_number_3.setText(Integer.toString(numeros_sorteados.get(2)));
-                            sort_number_4.setText(Integer.toString(numeros_sorteados.get(3)));
-                            sort_number_5.setText(Integer.toString(numeros_sorteados.get(4)));
-                            sort_number_6.setText(Integer.toString(numeros_sorteados.get(5)));
-                            sort_number_7.setText(Integer.toString(numeros_sorteados.get(6)));
-                            sort_number_8.setText(Integer.toString(numeros_sorteados.get(7)));
-                            sort_number_9.setText(Integer.toString(numeros_sorteados.get(8)));
-                            sort_number_10.setText(Integer.toString(numeros_sorteados.get(9)));
-                            
-                        } else {
-                            errorLabel.setText("O numero maximo de numeros sorteado é 10");
-                        }
-                        
-                    } else {
-                        errorLabel.setText("A quantidade sorteada deve ser menor que a diferença do maior e do menor numero");
+        t = new javax.swing.Timer(maxTime, (ActionEvent e) -> {
+            int values[] = ValidateReceivedNumbersRange(maximumNumber, minimalNumber, errorLabel);
+            if (values != null){
+                if(winksCount < maxWinks){
+                    SetAllSortNumbersToInitialState();
+                    if (sortNumber1.isVisible() == true) {
+                        winksCount++;
+                        SetAllSortNumbersVisible(false);
+                    }else{
+                        SetAllSortNumbersVisible(true);
                     }
-              
                 } else {
-                    
-                    errorLabel.setText("Os inteiros devem ser inseridos em forma crescente!");
-                    
+                    SetAllSortNumbersVisible(true);
+                    t.stop();
+                    winksCount = maxWinks;
+                    for(int count = values[0]; count <= values[1]; count++){
+                        allNumbers.add(count);
+                    }
+                    Collections.shuffle(allNumbers);
+                    numberCountValue = (Integer.parseInt(totalNumberCount.getText()));
+                    for(int cont = 0; cont < numberCountValue; cont++){
+                        raffledNumbers.add(allNumbers.get(cont));
+                    }
+                    for(int count = 0; count < numberCountValue; count++){
+                        numberLabels.get(count).setText(ParseRaffledNumberToString(raffledNumbers.get(count)));
+                    }
                 }
-                
             }
         });
-        
     }
 
     /**
@@ -192,25 +144,25 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         errorLabel = new javax.swing.JLabel();
         text5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        sort_number_1 = new javax.swing.JLabel();
+        sortNumber1 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25));
-        sort_number_2 = new javax.swing.JLabel();
+        sortNumber2 = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25));
-        sort_number_3 = new javax.swing.JLabel();
+        sortNumber3 = new javax.swing.JLabel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25));
-        sort_number_4 = new javax.swing.JLabel();
+        sortNumber4 = new javax.swing.JLabel();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25));
-        sort_number_5 = new javax.swing.JLabel();
+        sortNumber5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        sort_number_6 = new javax.swing.JLabel();
+        sortNumber6 = new javax.swing.JLabel();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25));
-        sort_number_7 = new javax.swing.JLabel();
+        sortNumber7 = new javax.swing.JLabel();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25));
-        sort_number_8 = new javax.swing.JLabel();
+        sortNumber8 = new javax.swing.JLabel();
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25));
-        sort_number_9 = new javax.swing.JLabel();
+        sortNumber9 = new javax.swing.JLabel();
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25), new java.awt.Dimension(25, 25));
-        sort_number_10 = new javax.swing.JLabel();
+        sortNumber10 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         cleanButton = new javax.swing.JButton();
         filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 32767));
@@ -307,67 +259,67 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
 
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
-        sort_number_1.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
-        sort_number_1.setForeground(new java.awt.Color(0, 133, 178));
-        sort_number_1.setText("???");
-        jPanel6.add(sort_number_1, new java.awt.GridBagConstraints());
+        sortNumber1.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
+        sortNumber1.setForeground(new java.awt.Color(0, 133, 178));
+        sortNumber1.setText("???");
+        jPanel6.add(sortNumber1, new java.awt.GridBagConstraints());
         jPanel6.add(filler1, new java.awt.GridBagConstraints());
 
-        sort_number_2.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
-        sort_number_2.setForeground(new java.awt.Color(0, 133, 178));
-        sort_number_2.setText("???");
-        jPanel6.add(sort_number_2, new java.awt.GridBagConstraints());
+        sortNumber2.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
+        sortNumber2.setForeground(new java.awt.Color(0, 133, 178));
+        sortNumber2.setText("???");
+        jPanel6.add(sortNumber2, new java.awt.GridBagConstraints());
         jPanel6.add(filler2, new java.awt.GridBagConstraints());
 
-        sort_number_3.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
-        sort_number_3.setForeground(new java.awt.Color(0, 133, 178));
-        sort_number_3.setText("???");
-        jPanel6.add(sort_number_3, new java.awt.GridBagConstraints());
+        sortNumber3.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
+        sortNumber3.setForeground(new java.awt.Color(0, 133, 178));
+        sortNumber3.setText("???");
+        jPanel6.add(sortNumber3, new java.awt.GridBagConstraints());
         jPanel6.add(filler3, new java.awt.GridBagConstraints());
 
-        sort_number_4.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
-        sort_number_4.setForeground(new java.awt.Color(0, 133, 178));
-        sort_number_4.setText("???");
-        jPanel6.add(sort_number_4, new java.awt.GridBagConstraints());
+        sortNumber4.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
+        sortNumber4.setForeground(new java.awt.Color(0, 133, 178));
+        sortNumber4.setText("???");
+        jPanel6.add(sortNumber4, new java.awt.GridBagConstraints());
         jPanel6.add(filler4, new java.awt.GridBagConstraints());
 
-        sort_number_5.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
-        sort_number_5.setForeground(new java.awt.Color(0, 133, 178));
-        sort_number_5.setText("???");
-        jPanel6.add(sort_number_5, new java.awt.GridBagConstraints());
+        sortNumber5.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
+        sortNumber5.setForeground(new java.awt.Color(0, 133, 178));
+        sortNumber5.setText("???");
+        jPanel6.add(sortNumber5, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel6);
 
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
-        sort_number_6.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
-        sort_number_6.setForeground(new java.awt.Color(0, 133, 178));
-        sort_number_6.setText("???");
-        jPanel5.add(sort_number_6, new java.awt.GridBagConstraints());
+        sortNumber6.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
+        sortNumber6.setForeground(new java.awt.Color(0, 133, 178));
+        sortNumber6.setText("???");
+        jPanel5.add(sortNumber6, new java.awt.GridBagConstraints());
         jPanel5.add(filler5, new java.awt.GridBagConstraints());
 
-        sort_number_7.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
-        sort_number_7.setForeground(new java.awt.Color(0, 133, 178));
-        sort_number_7.setText("???");
-        jPanel5.add(sort_number_7, new java.awt.GridBagConstraints());
+        sortNumber7.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
+        sortNumber7.setForeground(new java.awt.Color(0, 133, 178));
+        sortNumber7.setText("???");
+        jPanel5.add(sortNumber7, new java.awt.GridBagConstraints());
         jPanel5.add(filler6, new java.awt.GridBagConstraints());
 
-        sort_number_8.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
-        sort_number_8.setForeground(new java.awt.Color(0, 133, 178));
-        sort_number_8.setText("???");
-        jPanel5.add(sort_number_8, new java.awt.GridBagConstraints());
+        sortNumber8.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
+        sortNumber8.setForeground(new java.awt.Color(0, 133, 178));
+        sortNumber8.setText("???");
+        jPanel5.add(sortNumber8, new java.awt.GridBagConstraints());
         jPanel5.add(filler7, new java.awt.GridBagConstraints());
 
-        sort_number_9.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
-        sort_number_9.setForeground(new java.awt.Color(0, 133, 178));
-        sort_number_9.setText("???");
-        jPanel5.add(sort_number_9, new java.awt.GridBagConstraints());
+        sortNumber9.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
+        sortNumber9.setForeground(new java.awt.Color(0, 133, 178));
+        sortNumber9.setText("???");
+        jPanel5.add(sortNumber9, new java.awt.GridBagConstraints());
         jPanel5.add(filler8, new java.awt.GridBagConstraints());
 
-        sort_number_10.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
-        sort_number_10.setForeground(new java.awt.Color(0, 133, 178));
-        sort_number_10.setText("???");
-        jPanel5.add(sort_number_10, new java.awt.GridBagConstraints());
+        sortNumber10.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
+        sortNumber10.setForeground(new java.awt.Color(0, 133, 178));
+        sortNumber10.setText("???");
+        jPanel5.add(sortNumber10, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel5);
 
@@ -437,7 +389,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
 
     private void raffleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raffleButtonActionPerformed
                 
-        timer_flag = 0;
+        winksCount = 0;
         t.start();
         cleanButton.setEnabled(true);
         raffleButton.setEnabled(false);
@@ -446,20 +398,9 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
 
     private void cleanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanButtonActionPerformed
 
-        sort_number_1.setText("???");
-        sort_number_2.setText("???");
-        sort_number_3.setText("???");
-        sort_number_4.setText("???");
-        sort_number_5.setText("???");
-        sort_number_6.setText("???");
-        sort_number_7.setText("???");
-        sort_number_8.setText("???");
-        sort_number_9.setText("???");
-        sort_number_10.setText("???");
-        sort_number_1.setText("???");
-
-        numeros_sorteados.clear();
-        todos_numeros.clear();
+        SetAllSortNumbersToInitialState();
+        raffledNumbers.clear();
+        allNumbers.clear();
             
         errorLabel.setText("");
         raffleButton.setEnabled(true);
@@ -539,16 +480,16 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
     private javax.swing.JTextField maximumNumber;
     private javax.swing.JTextField minimalNumber;
     private javax.swing.JButton raffleButton;
-    private javax.swing.JLabel sort_number_1;
-    private javax.swing.JLabel sort_number_10;
-    private javax.swing.JLabel sort_number_2;
-    private javax.swing.JLabel sort_number_3;
-    private javax.swing.JLabel sort_number_4;
-    private javax.swing.JLabel sort_number_5;
-    private javax.swing.JLabel sort_number_6;
-    private javax.swing.JLabel sort_number_7;
-    private javax.swing.JLabel sort_number_8;
-    private javax.swing.JLabel sort_number_9;
+    private javax.swing.JLabel sortNumber1;
+    private javax.swing.JLabel sortNumber10;
+    private javax.swing.JLabel sortNumber2;
+    private javax.swing.JLabel sortNumber3;
+    private javax.swing.JLabel sortNumber4;
+    private javax.swing.JLabel sortNumber5;
+    private javax.swing.JLabel sortNumber6;
+    private javax.swing.JLabel sortNumber7;
+    private javax.swing.JLabel sortNumber8;
+    private javax.swing.JLabel sortNumber9;
     private javax.swing.JLabel text1;
     private javax.swing.JLabel text2;
     private javax.swing.JLabel text3;

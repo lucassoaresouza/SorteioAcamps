@@ -231,7 +231,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="sort_number_1">
+        <Component class="javax.swing.JLabel" name="sortNumber1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Font(&quot;Showcard Gothic&quot;, 0, screenHeight/10)" type="code"/>
@@ -265,7 +265,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="sort_number_2">
+        <Component class="javax.swing.JLabel" name="sortNumber2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Font(&quot;Showcard Gothic&quot;, 0, screenHeight/10)" type="code"/>
@@ -299,7 +299,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="sort_number_3">
+        <Component class="javax.swing.JLabel" name="sortNumber3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Font(&quot;Showcard Gothic&quot;, 0, screenHeight/10)" type="code"/>
@@ -333,7 +333,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="sort_number_4">
+        <Component class="javax.swing.JLabel" name="sortNumber4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Font(&quot;Showcard Gothic&quot;, 0, screenHeight/10)" type="code"/>
@@ -367,7 +367,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="sort_number_5">
+        <Component class="javax.swing.JLabel" name="sortNumber5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Font(&quot;Showcard Gothic&quot;, 0, screenHeight/10)" type="code"/>
@@ -389,7 +389,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="sort_number_6">
+        <Component class="javax.swing.JLabel" name="sortNumber6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Font(&quot;Showcard Gothic&quot;, 0, screenHeight/10)" type="code"/>
@@ -423,7 +423,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="sort_number_7">
+        <Component class="javax.swing.JLabel" name="sortNumber7">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Font(&quot;Showcard Gothic&quot;, 0, screenHeight/10)" type="code"/>
@@ -457,7 +457,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="sort_number_8">
+        <Component class="javax.swing.JLabel" name="sortNumber8">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Font(&quot;Showcard Gothic&quot;, 0, screenHeight/10)" type="code"/>
@@ -491,7 +491,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="sort_number_9">
+        <Component class="javax.swing.JLabel" name="sortNumber9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Font(&quot;Showcard Gothic&quot;, 0, screenHeight/10)" type="code"/>
@@ -525,7 +525,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="sort_number_10">
+        <Component class="javax.swing.JLabel" name="sortNumber10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Font(&quot;Showcard Gothic&quot;, 0, screenHeight/10)" type="code"/>

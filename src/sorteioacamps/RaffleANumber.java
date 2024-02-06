@@ -11,6 +11,7 @@ import javax.swing.Timer;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import static sorteioacamps.Utils.ParseRaffledNumberToString;
 
 /**
  *
@@ -55,32 +56,24 @@ public class RaffleANumber extends javax.swing.JFrame {
         return values;
     }
 
-    public String ParseRaffledNumberToString(int raffledNumber){
-        String parsedRaffledNumber;
-        if(raffledNumber < 10){
-           parsedRaffledNumber = "00" + Integer.toString(raffledNumber);
-        } else if(raffledNumber >= 10 && raffledNumber <= 99){
-            parsedRaffledNumber = "0"+ Integer.toString(raffledNumber);
-        } else {
-            parsedRaffledNumber = Integer.toString(raffledNumber);
-        }  
-        return parsedRaffledNumber;
-    }
-
-    public void ShowResult(){
-    
-    }
-
     public RaffleANumber() {
         initComponents();
         text4.setText("???");
         t = new javax.swing.Timer(maxTime, (ActionEvent e) -> {
-            if(winksCount < maxWinks){
-                winksCount = WinkAJLabel(text4, maxWinks, winksCount);
-            } else {
-                text4.setVisible(true);
-            }
-        });             
+            int[] values = ValidateReceivedNumbersRange(maximumNumber, minimalNumber, errorLabel);
+            if(values != null){
+                if(winksCount < maxWinks){
+                    winksCount = WinkAJLabel(text4, maxWinks, winksCount);
+                } else {
+                    t.stop();
+                    text4.setVisible(true);
+                    winksCount = maxWinks;
+                    int raffledNumber = raffle.RaffleNumber(values[0], values[1]);
+                    String parsedRaffledNumber = ParseRaffledNumberToString(raffledNumber);
+                    text4.setText(parsedRaffledNumber);
+                }
+            } 
+        });
     }
 
     /**
@@ -257,7 +250,6 @@ public class RaffleANumber extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void cleanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanButtonActionPerformed
-
         text4.setText("???");
         errorLabel.setText("");
         raffleButton.setEnabled(true);
@@ -266,19 +258,10 @@ public class RaffleANumber extends javax.swing.JFrame {
 
     private void raffleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raffleButtonActionPerformed
         winksCount = 0;
-        int[] values = ValidateReceivedNumbersRange(maximumNumber, minimalNumber, errorLabel);
-        if (values == null){
-            cleanButton.setEnabled(true);
-            raffleButton.setEnabled(false);
-        } else {
-            t.setInitialDelay(0);
-            t.start();
-            int raffledNumber = raffle.RaffleNumber(values[0], values[1]);
-            String parsedRaffledNumber = ParseRaffledNumberToString(raffledNumber);
-            text4.setText(parsedRaffledNumber);
-            cleanButton.setEnabled(true);
-            raffleButton.setEnabled(false);
-        }
+        t.setInitialDelay(0);
+        t.start();
+        cleanButton.setEnabled(true);
+        raffleButton.setEnabled(false);
     }//GEN-LAST:event_raffleButtonActionPerformed
 
     
