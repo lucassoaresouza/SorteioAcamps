@@ -326,7 +326,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
         cleanButton.setBackground(new java.awt.Color(242, 242, 242));
-        cleanButton.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
+        cleanButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         cleanButton.setText("Limpar");
         cleanButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cleanButton.setBorderPainted(false);
@@ -345,7 +345,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         jPanel4.add(filler10, new java.awt.GridBagConstraints());
 
         raffleButton.setBackground(new java.awt.Color(242, 242, 242));
-        raffleButton.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
+        raffleButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         raffleButton.setText("Sortear");
         raffleButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         raffleButton.setBorderPainted(false);
@@ -367,7 +367,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         jPanel3.add(filler9);
 
         backButton.setBackground(new java.awt.Color(242, 242, 242));
-        backButton.setFont(new java.awt.Font("Liberation Sans", 0, 12)); // NOI18N
+        backButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         backButton.setText("Voltar");
         backButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         backButton.setBorderPainted(false);
