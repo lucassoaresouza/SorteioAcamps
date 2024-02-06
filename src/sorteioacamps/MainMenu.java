@@ -20,6 +20,7 @@ public class MainMenu extends javax.swing.JFrame {
     int screenHeight = (int)screenSize.getHeight();
     RaffleANumber sort_numb = new RaffleANumber();
     RaffleMultNumbers sort_tarefa = new RaffleMultNumbers();
+    AllRecords allRecords = new AllRecords();
 
     public MainMenu() {
         initComponents();
@@ -42,6 +43,8 @@ public class MainMenu extends javax.swing.JFrame {
         raffleANumbers = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         raffleMultNumbers = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         text2 = new javax.swing.JLabel();
         text3 = new javax.swing.JLabel();
 
@@ -52,7 +55,7 @@ public class MainMenu extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setPreferredSize(new java.awt.Dimension(700, 500));
         setSize(new java.awt.Dimension(700, 500));
-        getContentPane().setLayout(new java.awt.GridLayout(6, 1, 0, 15));
+        getContentPane().setLayout(new java.awt.GridLayout(7, 1, 0, 15));
         getContentPane().add(jPanel3);
 
         text1.setFont(new java.awt.Font("Arial", 1, screenHeight/15));
@@ -119,6 +122,26 @@ public class MainMenu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2);
 
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
+        jButton1.setBackground(new java.awt.Color(242, 242, 242));
+        jButton1.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
+        jButton1.setText("Ver Registros");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setBorderPainted(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        jButton1.setMinimumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        jButton1.setPreferredSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1, new java.awt.GridBagConstraints());
+
+        getContentPane().add(jPanel4);
+
         text2.setFont(new java.awt.Font("Arial", 1, screenHeight/20));
         text2.setForeground(new java.awt.Color(0, 133, 178));
         text2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -154,6 +177,10 @@ public class MainMenu extends javax.swing.JFrame {
         sort_numb.setVisible(true);
 
     }//GEN-LAST:event_raffleANumbersActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        allRecords.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -193,9 +220,11 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JButton raffleANumbers;
     private javax.swing.JButton raffleMultNumbers;
     private javax.swing.JLabel text1;
