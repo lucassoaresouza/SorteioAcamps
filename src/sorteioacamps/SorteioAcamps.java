@@ -1,6 +1,10 @@
 package sorteioacamps;
 
 import java.awt.EventQueue;
+import java.util.ArrayList;
+import static sorteioacamps.FileHandler.createFile;
+import static sorteioacamps.FileHandler.readFile;
+import static sorteioacamps.FileHandler.writeFile;
 
 /**
  *
@@ -21,6 +25,5 @@ public class SorteioAcamps {
                 e.printStackTrace();
             }
         });
-    
     }
 }

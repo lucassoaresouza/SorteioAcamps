@@ -6,8 +6,8 @@
 package sorteioacamps;
 
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Toolkit;
+
 
 /**
  *
@@ -20,7 +20,7 @@ public class MainMenu extends javax.swing.JFrame {
     int screenHeight = (int)screenSize.getHeight();
     RaffleANumber sort_numb = new RaffleANumber();
     RaffleMultNumbers sort_tarefa = new RaffleMultNumbers();
-    
+
     public MainMenu() {
         initComponents();
         //verificar_janela();
