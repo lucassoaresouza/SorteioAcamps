@@ -60,6 +60,10 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
             errorLabel.setText("A quantidade deve estar entre 1 e 10");
             return null;
         }
+        if(numMin < 0 || numMax < 0){
+            errorLabel.setText("Os inteiros devem ser positivos!");
+            return null;
+        }
         if (numMin > numMax) {
             errorLabel.setText("Os inteiros devem ser inseridos em forma crescente!");
             return null;
@@ -160,9 +164,9 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         minimalNumber = new javax.swing.JTextField();
         text4 = new javax.swing.JLabel();
         maximumNumber = new javax.swing.JTextField();
-        errorLabel = new javax.swing.JLabel();
         text6 = new javax.swing.JLabel();
         raffledTo = new javax.swing.JComboBox<>();
+        errorLabel = new javax.swing.JLabel();
         text5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         sortNumber1 = new javax.swing.JLabel();
@@ -266,10 +270,6 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         });
         jPanel2.add(maximumNumber, new java.awt.GridBagConstraints());
 
-        errorLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel2.add(errorLabel, new java.awt.GridBagConstraints());
-
         text6.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
         text6.setForeground(new java.awt.Color(0, 133, 178));
         text6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -279,6 +279,10 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         raffledTo.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/25));
         raffledTo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nada", "Tarefa", "Brinde", "Outro" }));
         jPanel2.add(raffledTo, new java.awt.GridBagConstraints());
+
+        errorLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(errorLabel, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel2);
 
@@ -417,12 +421,10 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void raffleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raffleButtonActionPerformed
-                
+        raffleButton.setEnabled(false);
         winksCount = 0;
         t.start();
         cleanButton.setEnabled(true);
-        raffleButton.setEnabled(false);
-        
     }//GEN-LAST:event_raffleButtonActionPerformed
 
     private void cleanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanButtonActionPerformed

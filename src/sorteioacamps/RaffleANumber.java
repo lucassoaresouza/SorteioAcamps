@@ -6,10 +6,8 @@
 package sorteioacamps;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,6 +47,10 @@ public class RaffleANumber extends javax.swing.JFrame {
             numMin = Integer.parseInt(jTextFieldNumMin.getText());
         } catch(NumberFormatException ex) {
             jLabelValidationError.setText("Os campos devem conter somente números inteiros!");
+            return null;
+        }
+        if(numMin < 0 || numMax < 0){
+            jLabelValidationError.setText("Os inteiros devem ser positivos!");
             return null;
         }
         if(numMin > numMax){
@@ -105,11 +107,11 @@ public class RaffleANumber extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
+        errorLabel = new javax.swing.JLabel();
         text1 = new javax.swing.JLabel();
         minimalNumber = new javax.swing.JTextField();
         text2 = new javax.swing.JLabel();
         maximumNumber = new javax.swing.JTextField();
-        errorLabel = new javax.swing.JLabel();
         text5 = new javax.swing.JLabel();
         raffledTo = new javax.swing.JComboBox<>();
         text3 = new javax.swing.JLabel();
@@ -129,6 +131,13 @@ public class RaffleANumber extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridLayout(5, 0, 0, 15));
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        errorLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        jPanel1.add(errorLabel, gridBagConstraints);
 
         text1.setFont(new java.awt.Font("Arial Black", 0, screenHeight/30));
         text1.setForeground(new java.awt.Color(0, 133, 178));
@@ -167,13 +176,6 @@ public class RaffleANumber extends javax.swing.JFrame {
             }
         });
         jPanel1.add(maximumNumber, new java.awt.GridBagConstraints());
-
-        errorLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        errorLabel.setForeground(new java.awt.Color(255, 0, 0));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        jPanel1.add(errorLabel, gridBagConstraints);
 
         text5.setFont(new java.awt.Font("Arial Black", 0, screenHeight/30));
         text5.setForeground(new java.awt.Color(0, 133, 178));
