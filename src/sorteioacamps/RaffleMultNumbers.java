@@ -120,7 +120,6 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
                     for(int count = 0; count < numberCountValue; count++){
                         numberLabels.get(count).setText("---");
                     }
-                    System.out.println(numbersToRaffleByOption.size());
                     numberCountValue = (Integer.parseInt(totalNumberCount.getText()));
                     if(numbersToRaffleByOption.size() >= 1){
                         if(numbersToRaffleByOption.size() >= numberCountValue){

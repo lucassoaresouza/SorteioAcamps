@@ -36,9 +36,7 @@ public class FileHandler {
             FileWriter writer = new FileWriter(fileName);
             writer.write(content);
             writer.close();
-            System.out.println("Content has been written to the file.");
         } catch (IOException e) {
-            System.out.println("An error occurred while writing to the file.");
             e.printStackTrace();
         }
     }
@@ -54,7 +52,6 @@ public class FileHandler {
             }
             reader.close();
         } catch (IOException e) {
-            System.out.println("An error occurred while reading the file.");
             e.printStackTrace();
         }
         return content.toString();
