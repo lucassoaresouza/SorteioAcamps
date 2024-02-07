@@ -131,12 +131,12 @@ public class RaffleANumber extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        text1.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
+        text1.setFont(new java.awt.Font("Arial Black", 0, screenHeight/30));
         text1.setForeground(new java.awt.Color(0, 133, 178));
         text1.setText("Sortear número entre");
         jPanel1.add(text1, new java.awt.GridBagConstraints());
 
-        minimalNumber.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
+        minimalNumber.setFont(new java.awt.Font("Arial Black", 0, screenHeight/30));
         minimalNumber.setForeground(new java.awt.Color(0, 133, 178));
         minimalNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         minimalNumber.setText("0");
@@ -150,12 +150,12 @@ public class RaffleANumber extends javax.swing.JFrame {
         });
         jPanel1.add(minimalNumber, new java.awt.GridBagConstraints());
 
-        text2.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
+        text2.setFont(new java.awt.Font("Arial Black", 0, screenHeight/30));
         text2.setForeground(new java.awt.Color(0, 133, 178));
         text2.setText("e");
         jPanel1.add(text2, new java.awt.GridBagConstraints());
 
-        maximumNumber.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
+        maximumNumber.setFont(new java.awt.Font("Arial Black", 0, screenHeight/30));
         maximumNumber.setForeground(new java.awt.Color(0, 133, 178));
         maximumNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         maximumNumber.setText("0");
@@ -176,11 +176,12 @@ public class RaffleANumber extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         jPanel1.add(errorLabel, gridBagConstraints);
 
-        text5.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
+        text5.setFont(new java.awt.Font("Arial Black", 0, screenHeight/30));
         text5.setForeground(new java.awt.Color(0, 133, 178));
-        text5.setText("para receber");
+        text5.setText("p/ receber");
         jPanel1.add(text5, new java.awt.GridBagConstraints());
 
+        raffledTo.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
         raffledTo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nada", "Tarefa", "Brinde", "Outro" }));
         raffledTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

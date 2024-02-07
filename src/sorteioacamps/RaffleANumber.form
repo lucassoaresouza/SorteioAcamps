@@ -41,7 +41,7 @@
         <Component class="javax.swing.JLabel" name="text1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new java.awt.Font(&quot;Arial Black&quot;, 0, screenHeight/15)" type="code"/>
+              <Connection code="new java.awt.Font(&quot;Arial Black&quot;, 0, screenHeight/30)" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b2" green="85" red="0" type="rgb"/>
@@ -57,7 +57,7 @@
         <Component class="javax.swing.JTextField" name="minimalNumber">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new java.awt.Font(&quot;Arial Black&quot;, 0, screenHeight/15)" type="code"/>
+              <Connection code="new java.awt.Font(&quot;Arial Black&quot;, 0, screenHeight/30)" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b2" green="85" red="0" type="rgb"/>
@@ -86,7 +86,7 @@
         <Component class="javax.swing.JLabel" name="text2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new java.awt.Font(&quot;Arial Black&quot;, 0, screenHeight/15)" type="code"/>
+              <Connection code="new java.awt.Font(&quot;Arial Black&quot;, 0, screenHeight/30)" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b2" green="85" red="0" type="rgb"/>
@@ -102,7 +102,7 @@
         <Component class="javax.swing.JTextField" name="maximumNumber">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new java.awt.Font(&quot;Arial Black&quot;, 0, screenHeight/15)" type="code"/>
+              <Connection code="new java.awt.Font(&quot;Arial Black&quot;, 0, screenHeight/30)" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b2" green="85" red="0" type="rgb"/>
@@ -146,12 +146,12 @@
         <Component class="javax.swing.JLabel" name="text5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new java.awt.Font(&quot;Arial Black&quot;, 0, screenHeight/15)" type="code"/>
+              <Connection code="new java.awt.Font(&quot;Arial Black&quot;, 0, screenHeight/30)" type="code"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b2" green="85" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="para receber"/>
+            <Property name="text" type="java.lang.String" value="p/ receber"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -161,6 +161,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="raffledTo">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Font(&quot;Liberation Sans&quot;, 0, screenHeight/30)" type="code"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
                 <StringItem index="0" value="Nada"/>
