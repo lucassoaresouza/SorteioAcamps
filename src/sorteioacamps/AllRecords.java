@@ -24,11 +24,16 @@ public class AllRecords extends javax.swing.JFrame {
      * Creates new form AllRecords
      */
     public AllRecords() {
-        records = recordManager.readRecords();
+//        records = recordManager.readRecords();
         initComponents();
-        recordsTable.setModel(initRecordsTableModel());
+//        recordsTable.setModel(initRecordsTableModel());
     }
  
+    public void updateRecords(){
+        records = recordManager.readRecords();
+        recordsTable.setModel(initRecordsTableModel());
+    }
+
     private String translateBooleanToPTBr(boolean value){
         if (value){
             return "Sim";
