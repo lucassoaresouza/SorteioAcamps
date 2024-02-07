@@ -91,4 +91,22 @@ public class NumberRecordManager {
         }
         return recordsCanRaffle;
     }
+
+    public ArrayList<NumberRecord> updateRecords(ArrayList<NumberRecord> records, int index, String option){
+        NumberRecord selectedRecord = records.get(index);
+        if(null != option)switch (option) {
+            case "task":
+                selectedRecord.setTask(true);
+                break;
+            case "gift":
+                selectedRecord.setGift(true);
+                break;
+            case "other":
+                selectedRecord.setOther(true);
+                break;
+            default:
+                break;
+        }
+        return records;
+    }
 }

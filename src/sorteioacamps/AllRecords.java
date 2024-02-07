@@ -37,7 +37,7 @@ public class AllRecords extends javax.swing.JFrame {
     }
 
     private DefaultTableModel initRecordsTableModel(){
-        Object columnNames[] = { "Número", "Recebeu Brinde", "Recebeu Tarefa", "Outro"};
+        Object columnNames[] = { "Número", "Recebeu Tarefa", "Recebeu Brinde", "Outro"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
         Object[][] data = new Object[records.size()][4];
         for (int i = 0; i < records.size(); i++) {

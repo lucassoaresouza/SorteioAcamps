@@ -80,10 +80,16 @@ public class RaffleANumber extends javax.swing.JFrame {
                             values[0],
                             values[1]
                     );
-                    Collections.shuffle(numbersToRaffleByOption);
-                    int raffledNumber = numbersToRaffleByOption.get(0);
-                    String parsedRaffledNumber = ParseRaffledNumberToString(raffledNumber);
-                    text4.setText(parsedRaffledNumber);
+                    if (numbersToRaffleByOption.size() < 1){
+                        text4.setText("Sem opções!");
+                    } else {
+                        Collections.shuffle(numbersToRaffleByOption);
+                        int raffledNumber = numbersToRaffleByOption.get(0);
+                        String parsedRaffledNumber = ParseRaffledNumberToString(raffledNumber);
+                        text4.setText(parsedRaffledNumber);
+                        records = recordManager.updateRecords(records, raffledNumber, selectedOption);
+                        recordManager.writeRecordsToFile(records);
+                    }
                 }
             } 
         });
