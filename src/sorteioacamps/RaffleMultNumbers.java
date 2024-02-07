@@ -142,6 +142,8 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
                         recordManager.writeRecordsToFile(records);
                     }
                 }
+            } else {
+                t.stop();
             }
         });
     }
@@ -447,10 +449,12 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
 
     private void maximumNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maximumNumberActionPerformed
         // TODO add your handling code here:
+        System.out.println("maximum");
     }//GEN-LAST:event_maximumNumberActionPerformed
 
     private void totalNumberCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalNumberCountActionPerformed
         // TODO add your handling code here:
+        System.out.println("minimum");
     }//GEN-LAST:event_totalNumberCountActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

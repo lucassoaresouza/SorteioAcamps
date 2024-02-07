@@ -92,7 +92,9 @@ public class RaffleANumber extends javax.swing.JFrame {
                         recordManager.writeRecordsToFile(records);
                     }
                 }
-            } 
+            } else {
+                t.stop();
+            }
         });
     }
 
