@@ -30,7 +30,9 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
     int numberCountValue = 0;
     int maxWinks = 5;
     int maxTime = 100;
-    
+    private NumberRecordManager recordManager = new NumberRecordManager();
+    private ArrayList<NumberRecord> records;
+
     public void SetAllSortNumbersToInitialState(){
         for(javax.swing.JLabel sortNumber : numberLabels) {
            sortNumber.setText("???");
@@ -80,6 +82,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
     }
 
     public RaffleMultNumbers() {
+        records = recordManager.readRecords();
         initComponents();
         numberLabels.add(sortNumber1);
         numberLabels.add(sortNumber2);
@@ -93,6 +96,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         numberLabels.add(sortNumber10);
         
         t = new javax.swing.Timer(maxTime, (ActionEvent e) -> {
+            String selectedOption = recordManager.translateOption((String) raffledTo.getSelectedItem());
             int values[] = ValidateReceivedNumbersRange(maximumNumber, minimalNumber, errorLabel);
             if (values != null){
                 if(winksCount < maxWinks){
@@ -107,16 +111,33 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
                     SetAllSortNumbersVisible(true);
                     t.stop();
                     winksCount = maxWinks;
-                    for(int count = values[0]; count <= values[1]; count++){
-                        allNumbers.add(count);
-                    }
-                    Collections.shuffle(allNumbers);
-                    numberCountValue = (Integer.parseInt(totalNumberCount.getText()));
-                    for(int cont = 0; cont < numberCountValue; cont++){
-                        raffledNumbers.add(allNumbers.get(cont));
-                    }
+                    ArrayList<Integer> numbersToRaffleByOption = recordManager.returnAllNumbersCanRaffleByOption(
+                            selectedOption,
+                            records,
+                            values[0],
+                            values[1]
+                    );
+                    Collections.shuffle(numbersToRaffleByOption);
                     for(int count = 0; count < numberCountValue; count++){
-                        numberLabels.get(count).setText(ParseRaffledNumberToString(raffledNumbers.get(count)));
+                        numberLabels.get(count).setText("---");
+                    }
+                    System.out.println(numbersToRaffleByOption.size());
+                    numberCountValue = (Integer.parseInt(totalNumberCount.getText()));
+                    if(numbersToRaffleByOption.size() >= 1){
+                        if(numbersToRaffleByOption.size() >= numberCountValue){
+                            numberCountValue = (Integer.parseInt(totalNumberCount.getText()));
+                            for(int cont = 0; cont < numberCountValue; cont++){
+                                raffledNumbers.add(numbersToRaffleByOption.get(cont));
+                            }
+                        } else if (numbersToRaffleByOption.size() < numberCountValue){
+                           raffledNumbers = numbersToRaffleByOption;
+                        }
+                        for(int count = 0; count < raffledNumbers.size(); count++){
+                            int raffledNumber = raffledNumbers.get(count);
+                            numberLabels.get(count).setText(ParseRaffledNumberToString(raffledNumber));
+                            records = recordManager.updateRecords(records, raffledNumber, selectedOption);
+                        }
+                        recordManager.writeRecordsToFile(records);
                     }
                 }
             }
@@ -142,6 +163,8 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         text4 = new javax.swing.JLabel();
         maximumNumber = new javax.swing.JTextField();
         errorLabel = new javax.swing.JLabel();
+        text6 = new javax.swing.JLabel();
+        raffledTo = new javax.swing.JComboBox<>();
         text5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         sortNumber1 = new javax.swing.JLabel();
@@ -249,6 +272,16 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
         jPanel2.add(errorLabel, new java.awt.GridBagConstraints());
 
+        text6.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
+        text6.setForeground(new java.awt.Color(0, 133, 178));
+        text6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        text6.setText("p/ receber");
+        jPanel2.add(text6, new java.awt.GridBagConstraints());
+
+        raffledTo.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/25));
+        raffledTo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nada", "Tarefa", "Brinde", "Outro" }));
+        jPanel2.add(raffledTo, new java.awt.GridBagConstraints());
+
         getContentPane().add(jPanel2);
 
         text5.setFont(new java.awt.Font("Arial", 0, screenHeight/15));
@@ -331,7 +364,6 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         cleanButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cleanButton.setBorderPainted(false);
         cleanButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cleanButton.setDisabledIcon(null);
         cleanButton.setEnabled(false);
         cleanButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         cleanButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
@@ -350,7 +382,6 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         raffleButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         raffleButton.setBorderPainted(false);
         raffleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        raffleButton.setDisabledIcon(null);
         raffleButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         raffleButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         raffleButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
@@ -480,6 +511,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
     private javax.swing.JTextField maximumNumber;
     private javax.swing.JTextField minimalNumber;
     private javax.swing.JButton raffleButton;
+    private javax.swing.JComboBox<String> raffledTo;
     private javax.swing.JLabel sortNumber1;
     private javax.swing.JLabel sortNumber10;
     private javax.swing.JLabel sortNumber2;
@@ -495,6 +527,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
     private javax.swing.JLabel text3;
     private javax.swing.JLabel text4;
     private javax.swing.JLabel text5;
+    private javax.swing.JLabel text6;
     private javax.swing.JTextField totalNumberCount;
     // End of variables declaration//GEN-END:variables
 }
