@@ -20,14 +20,11 @@ public class FileHandler {
         try {
             File file = new File(fileName);
             if (file.createNewFile()) {
-                System.out.println("File created: " + file.getName());
                 return true;
             } else {
-                System.out.println("File already exists.");
                 return false;
             }
         } catch (IOException e) {
-            System.out.println("An error occurred while creating the file.");
             e.printStackTrace();
             return false;
         }
