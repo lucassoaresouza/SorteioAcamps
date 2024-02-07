@@ -5,6 +5,7 @@
  */
 package sorteioacamps;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -24,6 +25,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     public MainMenu() {
         initComponents();
+        Color customColor = new Color(255, 255, 255);
+        getContentPane().setBackground(customColor);
         //verificar_janela();
     }
 
@@ -37,6 +40,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         text1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -48,14 +52,18 @@ public class MainMenu extends javax.swing.JFrame {
         text2 = new javax.swing.JLabel();
         text3 = new javax.swing.JLabel();
 
+        jLabel1.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sorteio Acamps");
+        setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
         setLocation(new java.awt.Point(0, 0));
-        setPreferredSize(new java.awt.Dimension(700, 500));
         setSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new java.awt.GridLayout(7, 1, 0, 15));
+
+        jPanel3.setOpaque(false);
         getContentPane().add(jPanel3);
 
         text1.setFont(new java.awt.Font("Arial", 1, screenHeight/15));
@@ -70,9 +78,10 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(text1);
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        raffleANumbers.setBackground(new java.awt.Color(242, 242, 242));
+        raffleANumbers.setBackground(new java.awt.Color(202, 202, 202));
         raffleANumbers.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
         raffleANumbers.setText("Sorteio Único");
         raffleANumbers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -97,9 +106,10 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
 
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        raffleMultNumbers.setBackground(new java.awt.Color(242, 242, 242));
+        raffleMultNumbers.setBackground(new java.awt.Color(202, 202, 202));
         raffleMultNumbers.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
         raffleMultNumbers.setText("Sortear Vários");
         raffleMultNumbers.setToolTipText("");
@@ -123,9 +133,10 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(jPanel2);
 
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setBackground(new java.awt.Color(242, 242, 242));
+        jButton1.setBackground(new java.awt.Color(202, 202, 202));
         jButton1.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
         jButton1.setText("Ver Registros");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -157,7 +168,7 @@ public class MainMenu extends javax.swing.JFrame {
         text3.setFont(new java.awt.Font("Arial", 1, screenHeight/40));
         text3.setForeground(new java.awt.Color(0, 133, 178));
         text3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        text3.setText("Versão 1.1.0 - 05/02/2023");
+        text3.setText("Versão 2.0.0 - 07/02/2023");
         text3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         text3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         text3.setMaximumSize(new java.awt.Dimension(160, 30));
@@ -186,6 +197,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

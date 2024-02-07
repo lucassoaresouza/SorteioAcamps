@@ -5,6 +5,7 @@
  */
 package sorteioacamps;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -87,6 +88,8 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
     public RaffleMultNumbers() {
         records = recordManager.readRecords();
         initComponents();
+        Color customColor = new Color(255, 255, 255);
+        getContentPane().setBackground(customColor);
         numberLabels.add(sortNumber1);
         numberLabels.add(sortNumber2);
         numberLabels.add(sortNumber3);
@@ -205,6 +208,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new java.awt.GridLayout(7, 0));
 
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         text1.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
@@ -235,6 +239,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
 
+        jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         text3.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
@@ -294,6 +299,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         text5.setText("Números Sorteados");
         getContentPane().add(text5);
 
+        jPanel6.setOpaque(false);
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
         sortNumber1.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
@@ -327,6 +333,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
 
         getContentPane().add(jPanel6);
 
+        jPanel5.setOpaque(false);
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
         sortNumber6.setFont(new java.awt.Font("Showcard Gothic", 0, screenHeight/10));
@@ -360,9 +367,10 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
 
         getContentPane().add(jPanel5);
 
+        jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        cleanButton.setBackground(new java.awt.Color(242, 242, 242));
+        cleanButton.setBackground(new java.awt.Color(202, 202, 202));
         cleanButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         cleanButton.setText("Limpar");
         cleanButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -380,7 +388,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         jPanel4.add(cleanButton, new java.awt.GridBagConstraints());
         jPanel4.add(filler10, new java.awt.GridBagConstraints());
 
-        raffleButton.setBackground(new java.awt.Color(242, 242, 242));
+        raffleButton.setBackground(new java.awt.Color(202, 202, 202));
         raffleButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         raffleButton.setText("Sortear");
         raffleButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -398,10 +406,11 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4);
 
+        jPanel3.setOpaque(false);
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
         jPanel3.add(filler9);
 
-        backButton.setBackground(new java.awt.Color(242, 242, 242));
+        backButton.setBackground(new java.awt.Color(202, 202, 202));
         backButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         backButton.setText("Voltar");
         backButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));

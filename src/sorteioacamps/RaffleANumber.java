@@ -5,6 +5,7 @@
  */
 package sorteioacamps;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.Timer;
 import java.awt.Dimension;
@@ -64,6 +65,8 @@ public class RaffleANumber extends javax.swing.JFrame {
     public RaffleANumber() {
         records = recordManager.readRecords();
         initComponents();
+        Color customColor = new Color(255, 255, 255);
+        getContentPane().setBackground(customColor);
         text4.setText("???");
         t = new javax.swing.Timer(maxTime, (ActionEvent e) -> {
             String selectedOption = recordManager.translateOption((String) raffledTo.getSelectedItem());
@@ -132,6 +135,7 @@ public class RaffleANumber extends javax.swing.JFrame {
         setLocation(new java.awt.Point(600, 300));
         getContentPane().setLayout(new java.awt.GridLayout(5, 0, 0, 15));
 
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         errorLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -186,6 +190,7 @@ public class RaffleANumber extends javax.swing.JFrame {
 
         raffledTo.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
         raffledTo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nada", "Tarefa", "Brinde", "Outro" }));
+        raffledTo.setOpaque(true);
         raffledTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 raffledToActionPerformed(evt);
@@ -208,9 +213,10 @@ public class RaffleANumber extends javax.swing.JFrame {
         text4.setText("???");
         getContentPane().add(text4);
 
+        jPanel3.setOpaque(false);
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
-        cleanButton.setBackground(new java.awt.Color(242, 242, 242));
+        cleanButton.setBackground(new java.awt.Color(202, 202, 202));
         cleanButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         cleanButton.setText("Limpar");
         cleanButton.setToolTipText("");
@@ -229,7 +235,7 @@ public class RaffleANumber extends javax.swing.JFrame {
         jPanel3.add(cleanButton, new java.awt.GridBagConstraints());
         jPanel3.add(filler1, new java.awt.GridBagConstraints());
 
-        raffleButton.setBackground(new java.awt.Color(242, 242, 242));
+        raffleButton.setBackground(new java.awt.Color(202, 202, 202));
         raffleButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         raffleButton.setText("Sortear");
         raffleButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -247,10 +253,11 @@ public class RaffleANumber extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3);
 
+        jPanel2.setOpaque(false);
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
         jPanel2.add(filler2);
 
-        backButton.setBackground(new java.awt.Color(242, 242, 242));
+        backButton.setBackground(new java.awt.Color(202, 202, 202));
         backButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         backButton.setText("Voltar");
         backButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -303,42 +310,6 @@ public class RaffleANumber extends javax.swing.JFrame {
     private void raffledToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raffledToActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_raffledToActionPerformed
-
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RaffleANumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RaffleANumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RaffleANumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RaffleANumber.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RaffleANumber().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;

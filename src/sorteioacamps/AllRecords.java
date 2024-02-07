@@ -4,6 +4,7 @@
  */
 package sorteioacamps;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -23,9 +24,9 @@ public class AllRecords extends javax.swing.JFrame {
      * Creates new form AllRecords
      */
     public AllRecords() {
-//        records = recordManager.readRecords();
         initComponents();
-//        recordsTable.setModel(initRecordsTableModel());
+        Color customColor = new Color(255, 255, 255);
+        getContentPane().setBackground(customColor);
     }
  
     public void updateRecords(){
@@ -64,7 +65,9 @@ public class AllRecords extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         text1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         recordsTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -73,15 +76,25 @@ public class AllRecords extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Todos os Registros");
+        setBackground(new java.awt.Color(237, 235, 201));
         setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
         getContentPane().setLayout(new java.awt.GridLayout(3, 0));
 
+        jPanel2.setBackground(new java.awt.Color(237, 235, 201));
+        jPanel2.setOpaque(false);
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        text1.setBackground(new java.awt.Color(237, 235, 201));
         text1.setFont(new java.awt.Font("Arial", 1, screenHeight/15));
         text1.setForeground(new java.awt.Color(0, 133, 178));
         text1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         text1.setText("Todos os Registros:");
         text1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(text1);
+        jPanel2.add(text1, new java.awt.GridBagConstraints());
+
+        getContentPane().add(jPanel2);
+
+        jPanel3.setOpaque(false);
 
         recordsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,12 +109,16 @@ public class AllRecords extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(recordsTable);
 
-        getContentPane().add(jScrollPane1);
+        jPanel3.add(jScrollPane1);
 
+        getContentPane().add(jPanel3);
+
+        jPanel1.setBackground(new java.awt.Color(237, 235, 201));
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
         jPanel1.add(filler1);
 
-        backButton.setBackground(new java.awt.Color(242, 242, 242));
+        backButton.setBackground(new java.awt.Color(202, 202, 202));
         backButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         backButton.setText("Voltar");
         backButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -130,6 +147,8 @@ public class AllRecords extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable recordsTable;
     private javax.swing.JLabel text1;
