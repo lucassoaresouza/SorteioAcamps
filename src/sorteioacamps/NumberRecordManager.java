@@ -5,6 +5,7 @@
 package sorteioacamps;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import static sorteioacamps.FileHandler.createFile;
 import static sorteioacamps.FileHandler.readFile;
 import static sorteioacamps.FileHandler.writeFile;
@@ -50,5 +51,44 @@ public class NumberRecordManager {
             toRecord += numberRecord.toString();
         }
         writeFile(fileName, toRecord);
+    }
+
+    public String translateOption(String selectedOption){
+        String translatedOption;
+        switch(selectedOption){
+            case("Tarefa"):
+                translatedOption = "task";
+                break;
+            case("Brinde"):
+                translatedOption = "gift";
+                break;
+            case("Outro"):
+                translatedOption = "other";
+                break;
+            case("Nada"):
+                translatedOption = null;
+                break;
+            default:
+                translatedOption = null;
+                break;
+        }
+        return translatedOption;
+    }
+
+    public ArrayList<Integer> returnAllNumbersCanRaffleByOption(String option, ArrayList<NumberRecord> records, int min, int max){
+        ArrayList<Integer> recordsCanRaffle = new ArrayList<>();
+        for(int i = min; i <= max; i++){
+            NumberRecord record = records.get(i);
+            if("task".equals(option) && !record.isTask()){
+                recordsCanRaffle.add(record.getNumber());
+            } else if("gift".equals(option) && !record.isGift()){
+                recordsCanRaffle.add(record.getNumber());
+            } else if("other".equals(option) && !record.isOther()){
+                recordsCanRaffle.add(record.getNumber());
+            } else if(option == null){
+              recordsCanRaffle.add(record.getNumber());
+            }
+        }
+        return recordsCanRaffle;
     }
 }

@@ -11,6 +11,8 @@ import javax.swing.Timer;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.Collections;
 import static sorteioacamps.Utils.ParseRaffledNumberToString;
 
 /**
@@ -27,6 +29,8 @@ public class RaffleANumber extends javax.swing.JFrame {
     int winksCount = 0;
     int maxWinks = 5;
     int maxTime = 100;
+    private NumberRecordManager recordManager = new NumberRecordManager();
+    private ArrayList<NumberRecord> records;
 
     public int WinkAJLabel(javax.swing.JLabel jlabel, int maxWinks, int winksCount){
         if (jlabel.isVisible() == true) {
@@ -57,9 +61,11 @@ public class RaffleANumber extends javax.swing.JFrame {
     }
 
     public RaffleANumber() {
+        records = recordManager.readRecords();
         initComponents();
         text4.setText("???");
         t = new javax.swing.Timer(maxTime, (ActionEvent e) -> {
+            String selectedOption = recordManager.translateOption((String) raffledTo.getSelectedItem());
             int[] values = ValidateReceivedNumbersRange(maximumNumber, minimalNumber, errorLabel);
             if(values != null){
                 if(winksCount < maxWinks){
@@ -68,7 +74,14 @@ public class RaffleANumber extends javax.swing.JFrame {
                     t.stop();
                     text4.setVisible(true);
                     winksCount = maxWinks;
-                    int raffledNumber = raffle.RaffleNumber(values[0], values[1]);
+                    ArrayList<Integer> numbersToRaffleByOption = recordManager.returnAllNumbersCanRaffleByOption(
+                            selectedOption,
+                            records,
+                            values[0],
+                            values[1]
+                    );
+                    Collections.shuffle(numbersToRaffleByOption);
+                    int raffledNumber = numbersToRaffleByOption.get(0);
                     String parsedRaffledNumber = ParseRaffledNumberToString(raffledNumber);
                     text4.setText(parsedRaffledNumber);
                 }
@@ -92,6 +105,8 @@ public class RaffleANumber extends javax.swing.JFrame {
         text2 = new javax.swing.JLabel();
         maximumNumber = new javax.swing.JTextField();
         errorLabel = new javax.swing.JLabel();
+        text5 = new javax.swing.JLabel();
+        raffledTo = new javax.swing.JComboBox<>();
         text3 = new javax.swing.JLabel();
         text4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -112,7 +127,7 @@ public class RaffleANumber extends javax.swing.JFrame {
 
         text1.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
         text1.setForeground(new java.awt.Color(0, 133, 178));
-        text1.setText("Sortear entre");
+        text1.setText("Sortear número entre");
         jPanel1.add(text1, new java.awt.GridBagConstraints());
 
         minimalNumber.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
@@ -155,6 +170,19 @@ public class RaffleANumber extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         jPanel1.add(errorLabel, gridBagConstraints);
 
+        text5.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
+        text5.setForeground(new java.awt.Color(0, 133, 178));
+        text5.setText("para receber");
+        jPanel1.add(text5, new java.awt.GridBagConstraints());
+
+        raffledTo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nada", "Tarefa", "Brinde", "Outro" }));
+        raffledTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                raffledToActionPerformed(evt);
+            }
+        });
+        jPanel1.add(raffledTo, new java.awt.GridBagConstraints());
+
         getContentPane().add(jPanel1);
 
         text3.setFont(new java.awt.Font("Arial Black", 0, screenHeight/15));
@@ -179,7 +207,6 @@ public class RaffleANumber extends javax.swing.JFrame {
         cleanButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cleanButton.setBorderPainted(false);
         cleanButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cleanButton.setDisabledIcon(null);
         cleanButton.setEnabled(false);
         cleanButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         cleanButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
@@ -198,7 +225,6 @@ public class RaffleANumber extends javax.swing.JFrame {
         raffleButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         raffleButton.setBorderPainted(false);
         raffleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        raffleButton.setDisabledIcon(null);
         raffleButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         raffleButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         raffleButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
@@ -264,6 +290,10 @@ public class RaffleANumber extends javax.swing.JFrame {
         raffleButton.setEnabled(false);
     }//GEN-LAST:event_raffleButtonActionPerformed
 
+    private void raffledToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raffledToActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_raffledToActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -312,9 +342,11 @@ public class RaffleANumber extends javax.swing.JFrame {
     private javax.swing.JTextField maximumNumber;
     private javax.swing.JTextField minimalNumber;
     private javax.swing.JButton raffleButton;
+    private javax.swing.JComboBox<String> raffledTo;
     private javax.swing.JLabel text1;
     private javax.swing.JLabel text2;
     private javax.swing.JLabel text3;
     private javax.swing.JLabel text4;
+    private javax.swing.JLabel text5;
     // End of variables declaration//GEN-END:variables
 }
