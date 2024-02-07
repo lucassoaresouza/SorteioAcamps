@@ -122,6 +122,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2);
 
+        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
         jButton1.setBackground(new java.awt.Color(242, 242, 242));
