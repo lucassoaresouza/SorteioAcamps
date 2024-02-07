@@ -7,6 +7,7 @@ package sorteioacamps;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -85,9 +86,35 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         return values;
     }
 
+    private void applyTextFonts(){
+        String shadowKGHappy = "fonts/KGHAPPY.ttf";
+        String solidKGHappy = "fonts/KGHAPPYSolid.ttf";
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/13));
+        backButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
+        cleanButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
+        raffleButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/25));
+        text2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/25));
+        text3.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/25));
+        text4.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/25));
+        text6.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/25));
+        text5.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/15));
+        sortNumber1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
+        sortNumber2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
+        sortNumber3.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
+        sortNumber4.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
+        sortNumber5.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
+        sortNumber6.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
+        sortNumber7.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
+        sortNumber8.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
+        sortNumber9.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
+        sortNumber10.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
+    }
+    
     public RaffleMultNumbers() {
         records = recordManager.readRecords();
         initComponents();
+        applyTextFonts();
         Color customColor = new Color(255, 255, 255);
         getContentPane().setBackground(customColor);
         numberLabels.add(sortNumber1);
@@ -139,7 +166,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
                         }
                         for(int count = 0; count < raffledNumbers.size(); count++){
                             int raffledNumber = raffledNumbers.get(count);
-                            numberLabels.get(count).setText(ParseRaffledNumberToString(raffledNumber));
+                            numberLabels.get(count).setText(ParseRaffledNumberToString(raffledNumber)+";");
                             records = recordManager.updateRecords(records, raffledNumber, selectedOption);
                         }
                         recordManager.writeRecordsToFile(records);
@@ -296,7 +323,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         text5.setFont(new java.awt.Font("Arial", 0, screenHeight/15));
         text5.setForeground(new java.awt.Color(0, 133, 178));
         text5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        text5.setText("Números Sorteados");
+        text5.setText("Números Sorteados:");
         getContentPane().add(text5);
 
         jPanel6.setOpaque(false);
@@ -373,8 +400,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         cleanButton.setBackground(new java.awt.Color(202, 202, 202));
         cleanButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         cleanButton.setText("Limpar");
-        cleanButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        cleanButton.setBorderPainted(false);
+        cleanButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cleanButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cleanButton.setEnabled(false);
         cleanButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
@@ -391,8 +417,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         raffleButton.setBackground(new java.awt.Color(202, 202, 202));
         raffleButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         raffleButton.setText("Sortear");
-        raffleButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        raffleButton.setBorderPainted(false);
+        raffleButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         raffleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         raffleButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         raffleButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
@@ -413,7 +438,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         backButton.setBackground(new java.awt.Color(202, 202, 202));
         backButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         backButton.setText("Voltar");
-        backButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        backButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         backButton.setBorderPainted(false);
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));

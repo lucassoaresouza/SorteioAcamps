@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.Timer;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -62,9 +63,24 @@ public class RaffleANumber extends javax.swing.JFrame {
         return values;
     }
 
+    private void applyTextFonts(){
+        String shadowKGHappy = "fonts/KGHAPPY.ttf";
+        String solidKGHappy = "fonts/KGHAPPYSolid.ttf";
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/13));
+        backButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
+        cleanButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
+        raffleButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/30));
+        text2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/30));
+        text5.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/30));
+        text4.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/7));
+        text3.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/15));
+    }
+    
     public RaffleANumber() {
         records = recordManager.readRecords();
         initComponents();
+        applyTextFonts();
         Color customColor = new Color(255, 255, 255);
         getContentPane().setBackground(customColor);
         text4.setText("???");
@@ -220,8 +236,7 @@ public class RaffleANumber extends javax.swing.JFrame {
         cleanButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         cleanButton.setText("Limpar");
         cleanButton.setToolTipText("");
-        cleanButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        cleanButton.setBorderPainted(false);
+        cleanButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cleanButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cleanButton.setEnabled(false);
         cleanButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
@@ -238,8 +253,7 @@ public class RaffleANumber extends javax.swing.JFrame {
         raffleButton.setBackground(new java.awt.Color(202, 202, 202));
         raffleButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         raffleButton.setText("Sortear");
-        raffleButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        raffleButton.setBorderPainted(false);
+        raffleButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         raffleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         raffleButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         raffleButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
@@ -260,8 +274,7 @@ public class RaffleANumber extends javax.swing.JFrame {
         backButton.setBackground(new java.awt.Color(202, 202, 202));
         backButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         backButton.setText("Voltar");
-        backButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        backButton.setBorderPainted(false);
+        backButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         backButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));

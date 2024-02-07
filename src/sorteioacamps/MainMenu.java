@@ -7,14 +7,18 @@ package sorteioacamps;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
 
 
 /**
  *
  * @author Lucas
  */
-public class MainMenu extends javax.swing.JFrame {
+public final class MainMenu extends javax.swing.JFrame {
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     int screenWidth = (int)screenSize.getWidth();
@@ -23,13 +27,24 @@ public class MainMenu extends javax.swing.JFrame {
     RaffleMultNumbers sort_tarefa = new RaffleMultNumbers();
     AllRecords allRecords = new AllRecords();
 
-    public MainMenu() {
+    public MainMenu() throws IOException, FontFormatException {
         initComponents();
+        applyTextFonts();
         Color customColor = new Color(255, 255, 255);
         getContentPane().setBackground(customColor);
         //verificar_janela();
     }
 
+    private void applyTextFonts(){
+        String shadowKGHappy = "fonts/KGHAPPY.ttf";
+        String solidKGHappy = "fonts/KGHAPPYSolid.ttf";
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/13));
+        text2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/20));
+        allRecordsButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/30));
+        raffleANumbers.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/30));
+        raffleMultNumbers.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/30));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +63,7 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         raffleMultNumbers = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        allRecordsButton = new javax.swing.JButton();
         text2 = new javax.swing.JLabel();
         text3 = new javax.swing.JLabel();
 
@@ -66,7 +81,7 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel3.setOpaque(false);
         getContentPane().add(jPanel3);
 
-        text1.setFont(new java.awt.Font("Arial", 1, screenHeight/15));
+        text1.setFont(new java.awt.Font("Mandali", 1, screenHeight/15));
         text1.setForeground(new java.awt.Color(0, 133, 178));
         text1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         text1.setText("Sorteio de Tarefas ou Brindes");
@@ -84,8 +99,7 @@ public class MainMenu extends javax.swing.JFrame {
         raffleANumbers.setBackground(new java.awt.Color(202, 202, 202));
         raffleANumbers.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
         raffleANumbers.setText("Sorteio Único");
-        raffleANumbers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        raffleANumbers.setBorderPainted(false);
+        raffleANumbers.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         raffleANumbers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         raffleANumbers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         raffleANumbers.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
@@ -113,8 +127,7 @@ public class MainMenu extends javax.swing.JFrame {
         raffleMultNumbers.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
         raffleMultNumbers.setText("Sortear Vários");
         raffleMultNumbers.setToolTipText("");
-        raffleMultNumbers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        raffleMultNumbers.setBorderPainted(false);
+        raffleMultNumbers.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         raffleMultNumbers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         raffleMultNumbers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         raffleMultNumbers.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
@@ -136,28 +149,27 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setBackground(new java.awt.Color(202, 202, 202));
-        jButton1.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
-        jButton1.setText("Ver Registros");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.setBorderPainted(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        jButton1.setMinimumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        jButton1.setPreferredSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        allRecordsButton.setBackground(new java.awt.Color(202, 202, 202));
+        allRecordsButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/30));
+        allRecordsButton.setText("Ver Registros");
+        allRecordsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        allRecordsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        allRecordsButton.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        allRecordsButton.setMinimumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        allRecordsButton.setPreferredSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
+        allRecordsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                allRecordsButtonActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new java.awt.GridBagConstraints());
+        jPanel4.add(allRecordsButton, new java.awt.GridBagConstraints());
 
         getContentPane().add(jPanel4);
 
         text2.setFont(new java.awt.Font("Arial", 1, screenHeight/20));
         text2.setForeground(new java.awt.Color(0, 133, 178));
         text2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        text2.setText("Primeira Igreja Batista Bíblica no Novo Gama");
+        text2.setText("I.B.B.N.G.");
         text2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         text2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         text2.setMaximumSize(new java.awt.Dimension((int)screenWidth/2, 36));
@@ -168,7 +180,7 @@ public class MainMenu extends javax.swing.JFrame {
         text3.setFont(new java.awt.Font("Arial", 1, screenHeight/40));
         text3.setForeground(new java.awt.Color(0, 133, 178));
         text3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        text3.setText("Versão 2.0.0 - 07/02/2023");
+        text3.setText("Versão 2.0.1 - 07/02/2023");
         text3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         text3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         text3.setMaximumSize(new java.awt.Dimension(160, 30));
@@ -190,13 +202,13 @@ public class MainMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_raffleANumbersActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void allRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allRecordsButtonActionPerformed
         allRecords.setVisible(true);
         allRecords.updateRecords();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_allRecordsButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton allRecordsButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

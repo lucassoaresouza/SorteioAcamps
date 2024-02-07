@@ -6,6 +6,7 @@ package sorteioacamps;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -25,10 +26,18 @@ public class AllRecords extends javax.swing.JFrame {
      */
     public AllRecords() {
         initComponents();
+        applyTextFonts();
         Color customColor = new Color(255, 255, 255);
         getContentPane().setBackground(customColor);
     }
- 
+
+    private void applyTextFonts(){
+        String shadowKGHappy = "fonts/KGHAPPY.ttf";
+        String solidKGHappy = "fonts/KGHAPPYSolid.ttf";
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/13));
+        backButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
+    }
+
     public void updateRecords(){
         records = recordManager.readRecords();
         recordsTable.setModel(initRecordsTableModel());
@@ -121,8 +130,7 @@ public class AllRecords extends javax.swing.JFrame {
         backButton.setBackground(new java.awt.Color(202, 202, 202));
         backButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         backButton.setText("Voltar");
-        backButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        backButton.setBorderPainted(false);
+        backButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         backButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         backButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
