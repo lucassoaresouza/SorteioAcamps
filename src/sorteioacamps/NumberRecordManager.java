@@ -5,7 +5,6 @@
 package sorteioacamps;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import static sorteioacamps.FileHandler.createFile;
 import static sorteioacamps.FileHandler.readFile;
 import static sorteioacamps.FileHandler.writeFile;

@@ -8,17 +8,16 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import sorteioacamps.NumberRecordManager;
 
 /**
  *
  * @author lucassouza
  */
 public class AllRecords extends javax.swing.JFrame {
-    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private int screenWidth = (int)screenSize.getWidth();
-    private int screenHeight = (int)screenSize.getHeight();
-    private NumberRecordManager recordManager = new NumberRecordManager();
+    private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private final int screenWidth = (int)screenSize.getWidth();
+    private final int screenHeight = (int)screenSize.getHeight();
+    private final NumberRecordManager recordManager = new NumberRecordManager();
     private ArrayList<NumberRecord> records;
     /**
      * Creates new form AllRecords
