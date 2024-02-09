@@ -57,6 +57,10 @@ public class RaffleANumber extends javax.swing.JFrame {
             jLabelValidationError.setText("Os inteiros devem ser positivos!");
             return null;
         }
+        if(numMin > 999 || numMax > 999){
+            errorLabel.setText("O número máximo para sorteio é 999!");
+            return null;
+        }
         if(numMin > numMax){
             jLabelValidationError.setText("Os inteiros devem ser inseridos em forma crescente!");
             return null;
@@ -81,6 +85,7 @@ public class RaffleANumber extends javax.swing.JFrame {
         minimalNumber.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/37));
         maximumNumber.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/37));
         raffledTo.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/37));
+        errorLabel.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/54));
     }
     
     public RaffleANumber() {
