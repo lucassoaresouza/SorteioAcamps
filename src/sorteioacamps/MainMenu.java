@@ -10,7 +10,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Toolkit;
-import java.io.File;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.io.IOException;
 
 
@@ -29,20 +30,31 @@ public final class MainMenu extends javax.swing.JFrame {
 
     public MainMenu() throws IOException, FontFormatException {
         initComponents();
-        applyTextFonts();
+        applyTextFonts(screenWidth, screenHeight);
         Color customColor = new Color(255, 255, 255);
         getContentPane().setBackground(customColor);
+        addComponentListener(new ComponentAdapter(){
+                @Override
+                public void componentResized(ComponentEvent e){
+                    int newScreenWidth = getWidth();
+                    int newScreenHeight = getHeight();
+                    applyTextFonts(newScreenWidth, newScreenHeight);
+                }
+            }
+        );
         //verificar_janela();
     }
 
-    private void applyTextFonts(){
+    private void applyTextFonts(int screenWidth, int screenHeight){
+        int averageScreenSize = (int)(screenWidth + screenHeight) / 2;
         String shadowKGHappy = "fonts/KGHAPPY.ttf";
         String solidKGHappy = "fonts/KGHAPPYSolid.ttf";
-        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/13));
-        text2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/20));
-        allRecordsButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/30));
-        raffleANumbers.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/30));
-        raffleMultNumbers.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/30));
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/27));
+        text2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/27));
+        text3.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/47));
+        allRecordsButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/37));
+        raffleANumbers.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/37));
+        raffleMultNumbers.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/37));
     }
     
     /**
@@ -102,9 +114,6 @@ public final class MainMenu extends javax.swing.JFrame {
         raffleANumbers.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         raffleANumbers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         raffleANumbers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        raffleANumbers.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        raffleANumbers.setMinimumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        raffleANumbers.setPreferredSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
         raffleANumbers.setVerifyInputWhenFocusTarget(false);
         raffleANumbers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,9 +139,6 @@ public final class MainMenu extends javax.swing.JFrame {
         raffleMultNumbers.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         raffleMultNumbers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         raffleMultNumbers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        raffleMultNumbers.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        raffleMultNumbers.setMinimumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        raffleMultNumbers.setPreferredSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
         raffleMultNumbers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 raffleMultNumbersActionPerformed(evt);
@@ -154,9 +160,6 @@ public final class MainMenu extends javax.swing.JFrame {
         allRecordsButton.setText("Ver Registros");
         allRecordsButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         allRecordsButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        allRecordsButton.setMaximumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        allRecordsButton.setMinimumSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
-        allRecordsButton.setPreferredSize(new java.awt.Dimension(screenWidth/2, screenHeight/6));
         allRecordsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 allRecordsButtonActionPerformed(evt);
