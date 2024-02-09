@@ -116,7 +116,7 @@ public class AllRecords extends javax.swing.JFrame {
         getContentPane().add(jPanel2);
 
         jPanel3.setOpaque(false);
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         recordsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,9 +145,6 @@ public class AllRecords extends javax.swing.JFrame {
         backButton.setText("Voltar");
         backButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        backButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        backButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
