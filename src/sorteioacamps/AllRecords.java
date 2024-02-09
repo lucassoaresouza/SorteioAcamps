@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,8 +19,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AllRecords extends javax.swing.JFrame {
     private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private final int screenWidth = (int)screenSize.getWidth();
-    private final int screenHeight = (int)screenSize.getHeight();
+    int screenWidth = (int)screenSize.getWidth();
+    int screenHeight = (int)screenSize.getHeight();
     private final NumberRecordManager recordManager = new NumberRecordManager();
     private ArrayList<NumberRecord> records;
     /**
@@ -26,16 +28,26 @@ public class AllRecords extends javax.swing.JFrame {
      */
     public AllRecords() {
         initComponents();
-        applyTextFonts();
+        applyTextFonts(screenWidth, screenHeight);
         Color customColor = new Color(255, 255, 255);
         getContentPane().setBackground(customColor);
+        addComponentListener(new ComponentAdapter(){
+                @Override
+                public void componentResized(ComponentEvent e){
+                    int newScreenWidth = getWidth();
+                    int newScreenHeight = getHeight();
+                    applyTextFonts(newScreenWidth, newScreenHeight);
+                }
+            }
+        );
     }
 
-    private void applyTextFonts(){
+    private void applyTextFonts(int screenWidth, int screenHeight){
+        int averageScreenSize = (int)(screenWidth + screenHeight) / 2;
         String shadowKGHappy = "fonts/KGHAPPY.ttf";
         String solidKGHappy = "fonts/KGHAPPYSolid.ttf";
-        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/13));
-        backButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/20));
+        backButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/47));
     }
 
     public void updateRecords(){
@@ -104,6 +116,7 @@ public class AllRecords extends javax.swing.JFrame {
         getContentPane().add(jPanel2);
 
         jPanel3.setOpaque(false);
+        jPanel3.setLayout(new java.awt.GridLayout());
 
         recordsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
