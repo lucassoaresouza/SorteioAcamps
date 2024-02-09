@@ -10,6 +10,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.Timer;
@@ -86,37 +88,51 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         return values;
     }
 
-    private void applyTextFonts(){
+    private void applyTextFonts(int screenWidth, int screenHeight){
+        int averageScreenSize = (int)(screenWidth + screenHeight) / 2;
         String shadowKGHappy = "fonts/KGHAPPY.ttf";
         String solidKGHappy = "fonts/KGHAPPYSolid.ttf";
-        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/13));
-        backButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
-        cleanButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
-        raffleButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
-        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/25));
-        text2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/25));
-        text3.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/25));
-        text4.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/25));
-        text6.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/25));
-        text5.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/15));
-        sortNumber1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
-        sortNumber2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
-        sortNumber3.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
-        sortNumber4.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
-        sortNumber5.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
-        sortNumber6.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
-        sortNumber7.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
-        sortNumber8.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
-        sortNumber9.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
-        sortNumber10.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/10));
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/20));
+        backButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/47));
+        cleanButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/47));
+        raffleButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/47));
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/32));
+        text2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/32));
+        text3.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/32));
+        text4.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/32));
+        text6.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/32));
+        text5.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/22));
+        sortNumber1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/17));
+        sortNumber2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/17));
+        sortNumber3.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/17));
+        sortNumber4.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/17));
+        sortNumber5.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/17));
+        sortNumber6.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/17));
+        sortNumber7.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/17));
+        sortNumber8.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/17));
+        sortNumber9.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/17));
+        sortNumber10.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/17));
+        minimalNumber.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/44));
+        maximumNumber.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/44));
+        raffledTo.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/44));
+        totalNumberCount.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/44));
     }
     
     public RaffleMultNumbers() {
         records = recordManager.readRecords();
         initComponents();
-        applyTextFonts();
+        applyTextFonts(screenWidth, screenHeight);
         Color customColor = new Color(255, 255, 255);
         getContentPane().setBackground(customColor);
+        addComponentListener(new ComponentAdapter(){
+                @Override
+                public void componentResized(ComponentEvent e){
+                    int newScreenWidth = getWidth();
+                    int newScreenHeight = getHeight();
+                    applyTextFonts(newScreenWidth, newScreenHeight);
+                }
+            }
+        );
         numberLabels.add(sortNumber1);
         numberLabels.add(sortNumber2);
         numberLabels.add(sortNumber3);
@@ -247,10 +263,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         totalNumberCount.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
         totalNumberCount.setForeground(new java.awt.Color(0, 133, 178));
         totalNumberCount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        totalNumberCount.setText("1");
-        totalNumberCount.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        totalNumberCount.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        totalNumberCount.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        totalNumberCount.setText("00");
         totalNumberCount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 totalNumberCountActionPerformed(evt);
@@ -278,10 +291,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         minimalNumber.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
         minimalNumber.setForeground(new java.awt.Color(0, 133, 178));
         minimalNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        minimalNumber.setText("0");
-        minimalNumber.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        minimalNumber.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        minimalNumber.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        minimalNumber.setText("000");
         jPanel2.add(minimalNumber, new java.awt.GridBagConstraints());
 
         text4.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
@@ -293,10 +303,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         maximumNumber.setFont(new java.awt.Font("Arial", 0, screenHeight/25));
         maximumNumber.setForeground(new java.awt.Color(0, 133, 178));
         maximumNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        maximumNumber.setText("0");
-        maximumNumber.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        maximumNumber.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
-        maximumNumber.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/25));
+        maximumNumber.setText("000");
         maximumNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maximumNumberActionPerformed(evt);
@@ -403,9 +410,6 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         cleanButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cleanButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cleanButton.setEnabled(false);
-        cleanButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        cleanButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        cleanButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         cleanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cleanButtonActionPerformed(evt);
@@ -419,9 +423,6 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         raffleButton.setText("Sortear");
         raffleButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         raffleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        raffleButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        raffleButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        raffleButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         raffleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 raffleButtonActionPerformed(evt);
@@ -439,11 +440,7 @@ public class RaffleMultNumbers extends javax.swing.JFrame {
         backButton.setFont(new java.awt.Font("Liberation Sans", 0, screenHeight/40));
         backButton.setText("Voltar");
         backButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        backButton.setBorderPainted(false);
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        backButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        backButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
