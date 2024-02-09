@@ -11,6 +11,8 @@ import javax.swing.Timer;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import static sorteioacamps.Utils.ParseRaffledNumberToString;
@@ -63,26 +65,39 @@ public class RaffleANumber extends javax.swing.JFrame {
         return values;
     }
 
-    private void applyTextFonts(){
+    private void applyTextFonts(int screenWidth, int screenHeight){
+        int averageScreenSize = (int)(screenWidth + screenHeight) / 2;
         String shadowKGHappy = "fonts/KGHAPPY.ttf";
         String solidKGHappy = "fonts/KGHAPPYSolid.ttf";
-        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/13));
-        backButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
-        cleanButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
-        raffleButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, screenHeight/40));
-        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/30));
-        text2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/30));
-        text5.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/30));
-        text4.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/7));
-        text3.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, screenHeight/15));
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/20));
+        backButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/47));
+        cleanButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/47));
+        raffleButton.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/47));
+        text1.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/37));
+        text2.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/37));
+        text5.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/37));
+        text4.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/14));
+        text3.setFont(CustomFont.loadFont(shadowKGHappy, Font.PLAIN, averageScreenSize/22));
+        minimalNumber.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/37));
+        maximumNumber.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/37));
+        raffledTo.setFont(CustomFont.loadFont(solidKGHappy, Font.PLAIN, averageScreenSize/37));
     }
     
     public RaffleANumber() {
         records = recordManager.readRecords();
         initComponents();
-        applyTextFonts();
+        applyTextFonts(screenWidth, screenHeight);
         Color customColor = new Color(255, 255, 255);
         getContentPane().setBackground(customColor);
+        addComponentListener(new ComponentAdapter(){
+                @Override
+                public void componentResized(ComponentEvent e){
+                    int newScreenWidth = getWidth();
+                    int newScreenHeight = getHeight();
+                    applyTextFonts(newScreenWidth, newScreenHeight);
+                }
+            }
+        );
         text4.setText("???");
         t = new javax.swing.Timer(maxTime, (ActionEvent e) -> {
             String selectedOption = recordManager.translateOption((String) raffledTo.getSelectedItem());
@@ -169,10 +184,7 @@ public class RaffleANumber extends javax.swing.JFrame {
         minimalNumber.setFont(new java.awt.Font("Arial Black", 0, screenHeight/30));
         minimalNumber.setForeground(new java.awt.Color(0, 133, 178));
         minimalNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        minimalNumber.setText("0");
-        minimalNumber.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
-        minimalNumber.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
-        minimalNumber.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
+        minimalNumber.setText("000");
         minimalNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 minimalNumberActionPerformed(evt);
@@ -188,10 +200,7 @@ public class RaffleANumber extends javax.swing.JFrame {
         maximumNumber.setFont(new java.awt.Font("Arial Black", 0, screenHeight/30));
         maximumNumber.setForeground(new java.awt.Color(0, 133, 178));
         maximumNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        maximumNumber.setText("0");
-        maximumNumber.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
-        maximumNumber.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
-        maximumNumber.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/15));
+        maximumNumber.setText("000");
         maximumNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 maximumNumberActionPerformed(evt);
@@ -239,9 +248,6 @@ public class RaffleANumber extends javax.swing.JFrame {
         cleanButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cleanButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cleanButton.setEnabled(false);
-        cleanButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        cleanButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        cleanButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         cleanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cleanButtonActionPerformed(evt);
@@ -255,9 +261,6 @@ public class RaffleANumber extends javax.swing.JFrame {
         raffleButton.setText("Sortear");
         raffleButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         raffleButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        raffleButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        raffleButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        raffleButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         raffleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 raffleButtonActionPerformed(evt);
@@ -276,9 +279,6 @@ public class RaffleANumber extends javax.swing.JFrame {
         backButton.setText("Voltar");
         backButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backButton.setMaximumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        backButton.setMinimumSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
-        backButton.setPreferredSize(new java.awt.Dimension(screenWidth/10, screenHeight/40));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
