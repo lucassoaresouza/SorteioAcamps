@@ -172,7 +172,6 @@ public final class MainMenu extends javax.swing.JFrame {
         text2.setFont(new java.awt.Font("Arial", 1, screenHeight/20));
         text2.setForeground(new java.awt.Color(0, 133, 178));
         text2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        text2.setText("I.B.B.N.G.");
         text2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         text2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         text2.setMaximumSize(new java.awt.Dimension((int)screenWidth/2, 36));
